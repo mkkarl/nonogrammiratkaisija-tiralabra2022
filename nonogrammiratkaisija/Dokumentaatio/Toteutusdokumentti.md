@@ -42,13 +42,17 @@ Jos muutoksia ei ole tapahtunut, siirytään peruuttavaan hakuun ((*chronologica
 
 Peruuttavassa haussa käytetään apuna loogisia sääntöjä rajaamaan tutkittavien vaihtoehtojen määrää.
 
+Luokan `Nonogrammi` oliosta voidaan luoda kopioita ratkaisuvaihtoehtojen läpikäyntiä varten.
+
 *Perehdyn tämän vaiheen toteutukseen paremmin myöhemmin, viimeistään kun olen saanut loogiset säännöt toteutettua. Monet nonogrammit on ratkaistavissa pelkkien loogisten sääntöjenkin avulla.*
 
 ## Omat tietorakenteet ja luokat
 
-Luokka `Ruutu`, joka pitää kirjaa nonogrammin yksittäisen ruudun tilasta (tuntematon, musta, valkoinen, virhe). Tilaksi merkitään virhe, jos mustaa ruutua yritetään merkitä valkoiseksi tai päinvastoin. (Täytyy selvittää, miten ohjelman keskeytys tässä tapauksessa onnistuu.)
+Luokka `Nonogrammi`, joka pitää tallessa nonogrammia käsittelevää tietoa
+- Kaksiuloitteinen taulukko `ruudukko[][]`, joka koostuu luokan `Ruutu` olioista ja kuvastaa nonogrammista syntyvää kuvaa. *ehkä sittenkin luokkana?*
+- Taulukko `rivit[]`, joka koostuu luokan `Rivi` olioista.
 
-Kaksiuloitteinen taulukko `ruudukko[][]`, joka koostuu luokan `Ruutu` olioista ja kuvastaa nonogrammista syntyvää kuvaa. *ehkä sittenkin luokkana?*
+Luokka `Ruutu`, joka pitää kirjaa nonogrammin yksittäisen ruudun tilasta (tuntematon, musta, valkoinen, virhe; toteutetaan enumilla `RuudunTila`). Tilaksi merkitään virhe, jos mustaa ruutua yritetään merkitä valkoiseksi tai päinvastoin. (Täytyy selvittää, miten ohjelman keskeytys tässä tapauksessa onnistuu.)
 
 Luokat `Vaakarivi` ja `Pystyrivi`, jotka perivät yläluokan `Rivi` ????
 
@@ -56,10 +60,7 @@ Luokat `Vaakarivi` ja `Pystyrivi`, jotka perivät yläluokan `Rivi` ????
 - ensimmäinen musta pätkä? / taulukko mustista pätkistä
 - valmis boolean
 
-Taulukko `rivit[]`, joka koostuu luokan `Rivi` olioista.
-
 Luokka `MustaPatka`, joka sisältää tiedot tietyn mustan pätkän (mahdollisista) alku- ja loppupisteistä ja pituudesta
-
 - rivi, jolla pätkä on
     - voisi tuoda myös jokaisen metodin parametrina, mutta luonnista asti aina sama, joten ehkä helpompi näin?
 - edellinen pätkä (ensimmäisellä null) ???

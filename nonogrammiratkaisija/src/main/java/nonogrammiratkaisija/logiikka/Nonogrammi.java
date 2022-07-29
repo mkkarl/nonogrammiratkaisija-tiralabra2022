@@ -29,8 +29,12 @@ public class Nonogrammi {
         int[] lb = new int[palat.length];
         
         for (int i = 0; i < palat.length; i++) {
-            lb[i] = Integer.valueOf(palat[i]);
+            lb[i] = Integer.valueOf(palat[i]);  // tässä kohdin pitäisi huomioida tyhjät rivit
         }
+
+        // seuraava for-silmukka (O(n2)) on toteutettu artikkelin mukaisella kaavalla
+        // pystyisi tehostamaan laskemalla pätkät yhteen ja käyttämällä muuttujia
+        // edeltävät pätkät, käsiteltävä pätkä ja seuraavat pätkät (O(n))
 
         for (int j = 1; j <= k; j++) {
             int alku = 0;

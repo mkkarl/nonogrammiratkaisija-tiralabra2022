@@ -15,3 +15,9 @@ Nonogrammi eli japanilainen ristikko on ristikko, jossa ruudukon ruutuja värite
 [Viikkoraportti 1](https://github.com/mkkarl/nonogrammiratkaisija-tiralabra2022/blob/main/nonogrammiratkaisija/Dokumentaatio/Viikkoraportti1.md)
 
 [Viikkoraportti 2](https://github.com/mkkarl/nonogrammiratkaisija-tiralabra2022/blob/main/nonogrammiratkaisija/Dokumentaatio/Viikkoraportti2.md)
+
+## Käyttöohjeita
+
+### Checkstyle
+
+Checkstyle-raportin saa luotua komentorivillä komennolla `mvn jxr:jxr checkstyle:checkstyle`ja se löytyy polusta *nonogrammiratkaisja/target/checkstyle.html*.

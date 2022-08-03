@@ -3,11 +3,18 @@ package nonogrammiratkaisija.logiikka;
 public class MustaPatka {
     private int pituus;
     private int pieninMahdAlkupiste;
-    private int suurinMahdLoppipiste;
+    private int suurinMahdLoppupiste;
 
-    public MustaPatka(int pituus, int pieninMahdAlkupiste, int suurinMahdLoppipiste) {
+    /**
+     * Vaaka- tai pystyrivin yksittäinen musta alue.
+     * 
+     * @param pituus    Mustan pätkän pituus
+     * @param pieninMahdAlkupiste   Ensimmäinen mahdollinen alkamispiste
+     * @param suurinMahdLoppupiste  Viimeinen mahdollinen loppumispiste
+     */
+    public MustaPatka(int pituus, int pieninMahdAlkupiste, int suurinMahdLoppupiste) {
         this.pituus = pituus;
         this.pieninMahdAlkupiste = pieninMahdAlkupiste;
-        this.suurinMahdLoppipiste = suurinMahdLoppipiste;
+        this.suurinMahdLoppupiste = suurinMahdLoppupiste;
     }
 }

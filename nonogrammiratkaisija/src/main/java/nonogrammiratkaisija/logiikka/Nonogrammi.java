@@ -4,6 +4,12 @@ public class Nonogrammi {
     private Ruutu[][] ruudukko;
     private Rivi[] rivit;
 
+    /**
+     * Nonogrammi, joka koostuu riveistä ja ruuduista.
+     * 
+     * @param vaakarivit    Nonogrammin vaakarivien numerot vasemmalta oikealle ja ylhäältä alas taulukkona
+     * @param pystyrivit    Nonogrammin pystyrivien numerot ylhäältä alas ja vasemmalta oikealle taulukkona
+     */
     public Nonogrammi(String[] vaakarivit, String[] pystyrivit) {
         this.ruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
         this.rivit = new Rivi[vaakarivit.length + pystyrivit.length];

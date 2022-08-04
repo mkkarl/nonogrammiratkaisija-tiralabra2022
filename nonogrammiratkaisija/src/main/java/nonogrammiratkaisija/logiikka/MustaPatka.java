@@ -17,4 +17,16 @@ public class MustaPatka {
         this.pieninMahdAlkupiste = pieninMahdAlkupiste;
         this.suurinMahdLoppupiste = suurinMahdLoppupiste;
     }
+
+    public int getPituus() {
+        return this.pituus;
+    }
+
+    public int getPieninMahdAlkupiste() {
+        return this.pieninMahdAlkupiste;
+    }
+
+    public int getSuurinMahdLoppupiste() {
+        return this.suurinMahdLoppupiste;
+    }
 }

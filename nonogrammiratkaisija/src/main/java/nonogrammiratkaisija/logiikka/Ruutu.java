@@ -9,4 +9,8 @@ public class Ruutu {
     public Ruutu() {
         this.tila = RuudunTila.TUNTEMATON;
     }
+
+    public RuudunTila getTila() {
+        return this.tila;
+    }
 }

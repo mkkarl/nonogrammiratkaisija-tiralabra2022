@@ -17,5 +17,17 @@ public abstract class Rivi {
         this.patkat = patkat;
     }
 
+    public int getRivinumero() {
+        return this.rivinumero;
+    }
+
+    public boolean getValmis() {
+        return this.valmis;
+    }
+
+    public MustaPatka[] getPatkat() {
+        return this.patkat;
+    }
+
     
 }

@@ -65,4 +65,12 @@ public class Nonogrammi {
 
         return patkat;
     }
+
+    public Ruutu[][] getRuudukko() {
+        return this.ruudukko;
+    }
+
+    public Rivi[] getRivit() {
+        return this.rivit;
+    }
 }

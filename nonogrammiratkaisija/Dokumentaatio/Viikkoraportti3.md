@@ -17,3 +17,11 @@ Checkstylesta rajattu pois käyttöliittymä. Javadoccien teko aloitettu ja lis�
 Opittu, että omenapuun alla ei kannata puuhailla koneen kanssa elokuussa, sillä omena saattaa pudota koneelle ja saada näytön pimenemään. Onneksi koneen uudelleenkäynnistys auttoi.
 
 (n. 1,5h)
+
+**Torstai**
+
+Testien rivikattavuuden seurantaa varten lisätty JaCoCo, josta rajattu pois käyttöliittymä.
+
+Lisätty osalle logiikan luokista getterit. Luotu testiluokat ja tehty testit mustille pätkille.
+
+(n. 1,5h)

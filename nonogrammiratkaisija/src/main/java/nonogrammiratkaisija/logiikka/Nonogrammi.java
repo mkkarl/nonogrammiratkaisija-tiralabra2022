@@ -30,38 +30,46 @@ public class Nonogrammi {
     }
 
     private MustaPatka[] luoPatkat(int rivinPituus, String[] palat) {
-        MustaPatka[] patkat = new MustaPatka[palat.length];
-        int k = palat.length;
-        int[] lb = new int[palat.length];
+        MustaPatka[] patkat;
+
+        if (palat.length == 1 && palat[0].equals("")) {
+            patkat = null;
+        } else {
+            patkat = new MustaPatka[palat.length];
+            int k = palat.length;
+            int[] lb = new int[palat.length];
+            
+            for (int i = 0; i < palat.length; i++) {
+                lb[i] = Integer.valueOf(palat[i]);
+            }
+
+            // seuraava for-silmukka (O(n2)) on toteutettu artikkelin mukaisella kaavalla
+            // pystyisi tehostamaan laskemalla pätkät yhteen ja käyttämällä muuttujia
+            // edeltävät pätkät, käsiteltävä pätkä ja seuraavat pätkät (O(n))
+
+            for (int j = 1; j <= k; j++) {
+                int alku = 0;
+
+                if (j > 1) {
+                    for (int i = 1; i <= (j - 1); i++) {
+                        alku += lb[i - 1] + 1;
+                    }
+                }
+
+                int loppu = rivinPituus - 1;
+
+                if (j < k) {
+                    for (int i = (j + 1); i <= k; i++) {
+                        loppu -= lb[i - 1] + 1;
+                    }
+                }
+
+                patkat[j - 1] = new MustaPatka(lb[j - 1], alku, loppu);
+
+            }
+        }
+
         
-        for (int i = 0; i < palat.length; i++) {
-            lb[i] = Integer.valueOf(palat[i]);  // tässä kohdin pitäisi huomioida tyhjät rivit
-        }
-
-        // seuraava for-silmukka (O(n2)) on toteutettu artikkelin mukaisella kaavalla
-        // pystyisi tehostamaan laskemalla pätkät yhteen ja käyttämällä muuttujia
-        // edeltävät pätkät, käsiteltävä pätkä ja seuraavat pätkät (O(n))
-
-        for (int j = 1; j <= k; j++) {
-            int alku = 0;
-
-            if (j > 1) {
-                for (int i = 1; i <= (j - 1); i++) {
-                    alku += lb[i - 1] + 1;
-                }
-            }
-
-            int loppu = rivinPituus - 1;
-
-            if (j < k) {
-                for (int i = (j + 1); i <= k; i++) {
-                    loppu -= lb[i - 1] + 1;
-                }
-            }
-
-            patkat[j - 1] = new MustaPatka(lb[j - 1], alku, loppu);
-
-        }
 
         return patkat;
     }

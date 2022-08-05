@@ -25,3 +25,15 @@ Testien rivikattavuuden seurantaa varten lisätty JaCoCo, josta rajattu pois kä
 Lisätty osalle logiikan luokista getterit. Luotu testiluokat ja tehty testit mustille pätkille.
 
 (n. 1,5h)
+
+**Perjantai**
+
+Testien rivikattavuuden kasvatusta.
+
+Testejä kirjoittaessa keksin, miten huomioida nonogrammin alustuksessa tyhjät rivit ja muokkasin luokkaa `Nonogrammi` sen mukaan.
+
+Suunnittelin yksinkertaisia testinonogrammeja.
+
+Lisäsin käyttöliittymään nonogrammin tulostuksen.
+
+(n. 4h)

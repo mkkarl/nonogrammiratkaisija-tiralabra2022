@@ -12,6 +12,13 @@ public class Nonogrammi {
      */
     public Nonogrammi(String[] vaakarivit, String[] pystyrivit) {
         this.ruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
+
+        for (int i = 0; i < ruudukko.length; i++) {
+            for (int j = 0; j < ruudukko[0].length; j++) {
+                ruudukko[i][j] = new Ruutu();
+            }
+        }
+
         this.rivit = new Rivi[vaakarivit.length + pystyrivit.length];
 
         for (int i = 0; i < vaakarivit.length; i++) {

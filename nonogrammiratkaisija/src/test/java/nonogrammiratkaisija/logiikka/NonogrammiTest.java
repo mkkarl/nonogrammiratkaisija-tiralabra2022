@@ -102,4 +102,9 @@ public class NonogrammiTest {
         assertEquals(4, nonogrammi6.getRivit().length);
         assertEquals(4, nonogrammi7.getRivit().length);
     }
+
+    @Test
+    public void ruutu00OnTuntematon() {
+        assertEquals("TUNTEMATON", nonogrammi1.getRuudukko()[0][0].getTila().toString());
+    }
 }

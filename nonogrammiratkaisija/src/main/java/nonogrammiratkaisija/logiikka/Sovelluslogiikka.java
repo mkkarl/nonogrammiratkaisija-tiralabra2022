@@ -12,4 +12,8 @@ public class Sovelluslogiikka {
     public void alustaNonogrammi(String[] vaakarivit, String[] pystyrivit) {
         this.nonogrammi = new Nonogrammi(vaakarivit, pystyrivit);
     }
+
+    public Nonogrammi getNonogrammi() {
+        return this.nonogrammi;
+    }
 }

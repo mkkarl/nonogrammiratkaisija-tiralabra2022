@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SovelluslogiikkaTest {
+    Sovelluslogiikka sovelluslogiikka;
 
     public SovelluslogiikkaTest() {
 
@@ -23,10 +24,17 @@ public class SovelluslogiikkaTest {
 
     @Before
     public void setUp() {
+        sovelluslogiikka = new Sovelluslogiikka();
     }
 
     @After
     public void tearDown() {
     }
     
+    @Test
+    public void alustajaLuoNonogrammin() {
+        String[] yksiMusta = {"1"};
+        sovelluslogiikka.alustaNonogrammi(yksiMusta, yksiMusta);
+        assertNotNull(sovelluslogiikka.getNonogrammi());
+    }
 }

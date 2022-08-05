@@ -8,6 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MustaPatkaTest {
+
+    MustaPatka patka;
     
     public MustaPatkaTest() {
     }
@@ -22,6 +24,7 @@ public class MustaPatkaTest {
 
     @Before
     public void setUp() {
+        patka = new MustaPatka(2, 3, 9);
     }
 
     @After
@@ -30,8 +33,6 @@ public class MustaPatkaTest {
 
     @Test
     public void konstruktoriAsettaaPituudenOikein() {
-        MustaPatka patka = new MustaPatka(2, 3, 9);
-
         int pituus = patka.getPituus();
 
         assertEquals(2, pituus);
@@ -39,8 +40,6 @@ public class MustaPatkaTest {
 
     @Test
     public void konstruktoriAsettaaAlkupisteenOikein() {
-        MustaPatka patka = new MustaPatka(2, 3, 9);
-
         int alkupiste = patka.getPieninMahdAlkupiste();
 
         assertEquals(3, alkupiste);
@@ -48,8 +47,6 @@ public class MustaPatkaTest {
 
     @Test
     public void konstruktoriAsettaaLoppupisteenOikein() {
-        MustaPatka patka = new MustaPatka(2, 3, 9);
-
         int loppupiste = patka.getSuurinMahdLoppupiste();
 
         assertEquals(9, loppupiste);

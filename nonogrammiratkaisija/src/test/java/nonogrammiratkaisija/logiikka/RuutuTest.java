@@ -28,5 +28,14 @@ public class RuutuTest {
     @After
     public void tearDown() {
     }
+
+    @Test
+    public void konstruktoriAsettaaTilanOikein() {
+        Ruutu ruutu = new Ruutu();
+
+        String tila = ruutu.getTila().toString();
+
+        assertEquals("TUNTEMATON", tila);
+    }
     
 }

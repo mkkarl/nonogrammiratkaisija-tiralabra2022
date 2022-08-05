@@ -9,6 +9,8 @@ import static org.junit.Assert.*;
 
 public class PystyriviTest {
 
+    Pystyrivi tyhjaRivi;
+
     public PystyriviTest() {
 
     }
@@ -23,10 +25,18 @@ public class PystyriviTest {
 
     @Before
     public void setUp() {
+        tyhjaRivi = new Pystyrivi(2, null);
     }
 
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void konstruktoriAsettaaRivinumeronOikein() {
+        int rivinroTyhja = tyhjaRivi.getRivinumero();
+
+        assertEquals(2, rivinroTyhja);
     }
     
 }

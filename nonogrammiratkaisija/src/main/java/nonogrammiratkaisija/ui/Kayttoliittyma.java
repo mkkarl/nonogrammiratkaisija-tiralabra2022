@@ -2,6 +2,7 @@ package nonogrammiratkaisija.ui;
 
 import java.util.Scanner;
 
+import nonogrammiratkaisija.logiikka.Ruutu;
 import nonogrammiratkaisija.logiikka.Sovelluslogiikka;
 
 public class Kayttoliittyma {
@@ -31,6 +32,7 @@ public class Kayttoliittyma {
             if (komento.toUpperCase().equals("S")) {
                 // tähän tulee käsin syöttö
                 kasiSyotto();
+                tulostaNonogrammi();
             } else if (komento.toUpperCase().equals("T")) {
                 // tähän tulee tiedoston syöttö
                 System.out.println("Tiedoston syöttö on tuleva ominaisuus\n");
@@ -66,6 +68,29 @@ public class Kayttoliittyma {
         }
 
         sovelluslogiikka.alustaNonogrammi(vaakarivit, pystyrivit);
+    }
+
+    private void tulostaNonogrammi() {
+        Ruutu[][] ruudukko = this.sovelluslogiikka.getNonogrammi().getRuudukko();
+
+        for (int i = 0; i < ruudukko.length; i++) {
+            for (int j = 0; j < ruudukko[0].length;j++) {
+                String ruudunTila = ruudukko[i][j].getTila().toString();
+
+                if (ruudunTila.equals("TUNTEMATON")) {
+                    System.out.print("-");
+                } else if (ruudunTila.equals("VALKOINEN")) {
+                    System.out.print(" ");
+                } else if (ruudunTila.equals("MUSTA")) {
+                    System.out.print("O");
+                } else if (ruudunTila.equals("VIRHE")) {
+                    System.out.print("X");
+                } else {
+                    System.out.print("Ö");
+                }
+            }
+            System.out.println();
+        }
     }
 
     

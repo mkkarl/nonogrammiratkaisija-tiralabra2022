@@ -32,8 +32,14 @@ Testien rivikattavuuden kasvatusta.
 
 Testejä kirjoittaessa keksin, miten huomioida nonogrammin alustuksessa tyhjät rivit ja muokkasin luokkaa `Nonogrammi` sen mukaan.
 
-Suunnittelin yksinkertaisia testinonogrammeja.
+Suunnittelin yksinkertaisia [testinonogrammeja](https://github.com/mkkarl/nonogrammiratkaisija-tiralabra2022/blob/main/nonogrammiratkaisija/Dokumentaatio/Testinonogrammeja.pdf).
 
 Lisäsin käyttöliittymään nonogrammin tulostuksen.
 
 (n. 4h)
+
+**Lauantai**
+
+Sääntöjen ihmettelyä. Sääntö 1.1 saatu tehtyä.
+
+(n. 5h)

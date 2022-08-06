@@ -11,7 +11,8 @@ public class VaakariviTest {
 
     Vaakarivi tyhjaRivi;
     Vaakarivi yhdenRivi;
-    
+    Vaakarivi neljanRivi;
+
     public VaakariviTest() {
 
     }
@@ -32,6 +33,11 @@ public class VaakariviTest {
         patkat1[0] = new MustaPatka(1, 3, 6);
 
         yhdenRivi = new Vaakarivi(3, patkat1);
+
+        MustaPatka[] patkat2 = new MustaPatka[1];
+        patkat2[0] = new MustaPatka(4, 2, 7);
+
+        neljanRivi = new Vaakarivi(4, patkat2);
     }
 
     @After
@@ -66,5 +72,34 @@ public class VaakariviTest {
         boolean valmis = tyhjaRivi.getValmis();
 
         assertFalse(valmis);
+    }
+
+    @Test
+    public void varmojenMustienAlkuJaLoppuOikein() {
+        int[][] varmatTyhja = tyhjaRivi.varmatMustatAlkuLoppu();
+        assertNull(varmatTyhja);
+
+        int[][] varmat1 = yhdenRivi.varmatMustatAlkuLoppu();
+        int[][] vertaus1 = {{-1, -1, 0}};
+        assertArrayEquals(vertaus1, varmat1);
+
+        int[][] varmat2 = neljanRivi.varmatMustatAlkuLoppu();
+        int[][] vertaus2 = {{4, 5, 2}};
+        assertArrayEquals(vertaus2, varmat2);
+    }
+
+    @Test
+    public void varmojenKoordinaatitOikein() {
+        int[][] varmatTyhja = tyhjaRivi.varmojenMustienKoordinaatit();
+
+        assertNull(varmatTyhja);
+
+        int[][] varmat1 = yhdenRivi.varmojenMustienKoordinaatit();
+        assertNull(varmat1);
+
+        int[][] varmat2 = neljanRivi.varmojenMustienKoordinaatit();
+        int[][] vertaus2 = {{4, 4}, {4, 5}};
+
+        assertArrayEquals(vertaus2, varmat2);
     }
 }

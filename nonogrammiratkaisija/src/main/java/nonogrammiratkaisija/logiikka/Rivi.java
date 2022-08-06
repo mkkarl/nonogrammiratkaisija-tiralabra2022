@@ -9,7 +9,7 @@ public abstract class Rivi {
      * Nonogrammin rivi.
      * 
      * @param rivinumero Rivinumero, numerointi alkaa nollasta
-     * @param patkat    Rivin mustat pätkät taulukkona
+     * @param patkat     Rivin mustat pätkät taulukkona
      */
     public Rivi(int rivinumero, MustaPatka[] patkat) {
         this.rivinumero = rivinumero;
@@ -29,5 +29,41 @@ public abstract class Rivi {
         return this.patkat;
     }
 
-    
+    // SÄÄNNÖT
+
+    // Osa 1
+
+    // Sääntö 1.1
+
+    public abstract int[][] varmojenMustienKoordinaatit();
+
+    /**
+     * Rivillä olevien mustien pätkien varmat mustat ruudut, alku- ja loppupiste.
+     * 
+     * @return [alkupiste, loppupiste, pituus]
+     */
+    public int[][] varmatMustatAlkuLoppu() {
+        if (this.patkat == null) {
+            return null;
+        }
+        
+        int[][] valit = new int[this.patkat.length][3];
+
+        for (int i = 0; i < this.patkat.length; i++) {
+            int[] varmat = this.patkat[i].varmaMustaAlkuLoppu();
+
+            if (varmat == null) {
+                valit[i][0] = -1;
+                valit[i][1] = -1;
+                valit[i][2] = 0;
+            } else {
+                valit[i][0] = varmat[0];
+                valit[i][1] = varmat[1];
+                valit[i][2] = varmat[1] - varmat[0] + 1;
+            }
+        }
+
+        return valit;
+    }
+
 }

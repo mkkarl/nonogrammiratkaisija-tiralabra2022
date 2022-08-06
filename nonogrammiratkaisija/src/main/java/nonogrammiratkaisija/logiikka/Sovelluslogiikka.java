@@ -17,6 +17,9 @@ public class Sovelluslogiikka {
         return this.nonogrammi;
     }
 
+    /**
+     * Ratkaisee nonogrammin sääntöjä noudattaen.
+     */
     public void ratkaiseNonogrammi() {
         nonogrammi.saanto11();
     }

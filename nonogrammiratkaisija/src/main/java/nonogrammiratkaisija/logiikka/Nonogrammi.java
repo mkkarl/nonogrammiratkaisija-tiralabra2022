@@ -93,6 +93,9 @@ public class Nonogrammi {
 
     // Osa 1
 
+    /**
+     * Toteuttaa säännön 1.1.
+     */
     public void saanto11() {
         for (int i = 0; i < rivit.length; i++) {
             int[][] koordinaatit = rivit[i].varmojenMustienKoordinaatit();

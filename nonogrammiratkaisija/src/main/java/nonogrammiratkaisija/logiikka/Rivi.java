@@ -35,6 +35,11 @@ public abstract class Rivi {
 
     // Sääntö 1.1
 
+    /**
+     * Laskee rivillä olevien mustien pätkien varmojen mustien koordinaatit.
+     * 
+     * @return  [vaakarivi, pystyrivi]
+     */
     public abstract int[][] varmojenMustienKoordinaatit();
 
     /**
@@ -46,7 +51,7 @@ public abstract class Rivi {
         if (this.patkat == null) {
             return null;
         }
-        
+
         int[][] valit = new int[this.patkat.length][3];
 
         for (int i = 0; i < this.patkat.length; i++) {

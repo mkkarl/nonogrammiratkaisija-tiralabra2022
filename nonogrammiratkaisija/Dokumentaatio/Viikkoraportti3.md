@@ -42,4 +42,4 @@ Lisäsin käyttöliittymään nonogrammin tulostuksen.
 
 Sääntöjen ihmettelyä. Sääntö 1.1 saatu tehtyä.
 
-(n. 5h)
+(n. 5,25h)

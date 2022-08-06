@@ -16,4 +16,8 @@ public class Sovelluslogiikka {
     public Nonogrammi getNonogrammi() {
         return this.nonogrammi;
     }
+
+    public void ratkaiseNonogrammi() {
+        nonogrammi.saanto11();
+    }
 }

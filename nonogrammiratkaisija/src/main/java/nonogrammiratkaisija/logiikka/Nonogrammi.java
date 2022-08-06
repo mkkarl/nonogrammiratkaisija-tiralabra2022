@@ -88,4 +88,22 @@ public class Nonogrammi {
     public Rivi[] getRivit() {
         return this.rivit;
     }
+
+    // SÄÄNNÖT
+
+    // Osa 1
+
+    public void saanto11() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] koordinaatit = rivit[i].varmojenMustienKoordinaatit();
+
+            if (koordinaatit == null) {
+                continue;
+            }
+
+            for (int j = 0; j < koordinaatit.length; j++) {
+                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setMusta();
+            }
+        }
+    }
 }

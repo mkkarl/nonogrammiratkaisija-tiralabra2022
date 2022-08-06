@@ -107,4 +107,16 @@ public class NonogrammiTest {
     public void ruutu00OnTuntematon() {
         assertEquals("TUNTEMATON", nonogrammi1.getRuudukko()[0][0].getTila().toString());
     }
+
+    @Test
+    public void ruutuEiOleMustaSaanto11() {
+        nonogrammi1.saanto11();
+        assertNotEquals("MUSTA", nonogrammi1.getRuudukko()[0][0].getTila().toString());
+    }
+
+    @Test
+    public void ruutuOnMustaSaanto11() {
+        nonogrammi2.saanto11();
+        assertEquals("MUSTA", nonogrammi2.getRuudukko()[0][0].getTila().toString());
+    }
 }

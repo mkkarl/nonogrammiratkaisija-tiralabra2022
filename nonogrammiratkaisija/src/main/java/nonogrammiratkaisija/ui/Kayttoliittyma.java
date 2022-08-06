@@ -32,6 +32,7 @@ public class Kayttoliittyma {
             if (komento.toUpperCase().equals("S")) {
                 // tähän tulee käsin syöttö
                 kasiSyotto();
+                sovelluslogiikka.ratkaiseNonogrammi();
                 tulostaNonogrammi();
             } else if (komento.toUpperCase().equals("T")) {
                 // tähän tulee tiedoston syöttö

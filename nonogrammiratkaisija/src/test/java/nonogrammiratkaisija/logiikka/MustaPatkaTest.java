@@ -12,6 +12,8 @@ public class MustaPatkaTest {
     MustaPatka patka1;
     MustaPatka patka2;
     MustaPatka patka3;
+    MustaPatka patka4;
+    MustaPatka patka5;
     
     public MustaPatkaTest() {
     }
@@ -29,6 +31,9 @@ public class MustaPatkaTest {
         patka1 = new MustaPatka(2, 3, 9);
         patka2 = new MustaPatka(3, 0, 4);
         patka3 = new MustaPatka(4, 2, 7);
+        patka4 = new MustaPatka(2, 8, 10);
+        patka5 = new MustaPatka(2, 9, 10);
+
     }
 
     @After
@@ -56,6 +61,8 @@ public class MustaPatkaTest {
         assertEquals(9, loppupiste);
     }
 
+    // Sääntö 1.1
+
     @Test
     public void varmaAlkuJaLoppuOikein() {
         assertNull(patka1.varmaMustaAlkuLoppu());
@@ -65,5 +72,31 @@ public class MustaPatkaTest {
 
         int[] alkuLoppu3 = {4, 5};
         assertArrayEquals(alkuLoppu3, patka3.varmaMustaAlkuLoppu());
+    }
+
+    // Sääntö 1.2
+
+    @Test
+    public void valkoisetPatkienPaissaOikein() {
+        int[][] tulos1 = patka2.mustanPatkanUlkopuolisetValkoiset(null, null, 5);
+        int[][] vertaus1 = {{-1, -1}, {-1, -1}};
+        assertArrayEquals(vertaus1, tulos1);
+
+        int[][] tulos2 = patka2.mustanPatkanUlkopuolisetValkoiset(null, null, 7);
+        int[][] vertaus2 = {{-1, -1}, {5, 6}};
+        assertArrayEquals(vertaus2, tulos2);
+
+        int[][] tulos3 = patka3.mustanPatkanUlkopuolisetValkoiset(null, null, 8);
+        int[][] vertaus3 = {{0, 1}, {-1, -1}};
+        assertArrayEquals(vertaus3, tulos3);
+
+        int[][] tulos4 = patka3.mustanPatkanUlkopuolisetValkoiset(patka2, patka4, 11);
+        int[][] vertaus4 = {{-1, -1}, {-1, -1}};
+        assertArrayEquals(vertaus4, tulos4);
+
+        int[][] tulos5 = patka3.mustanPatkanUlkopuolisetValkoiset(null, patka5, 11);
+        int[][] vertaus5 = {{0, 1}, {8, 8}};
+        assertArrayEquals(vertaus5, tulos5);
+
     }
 }

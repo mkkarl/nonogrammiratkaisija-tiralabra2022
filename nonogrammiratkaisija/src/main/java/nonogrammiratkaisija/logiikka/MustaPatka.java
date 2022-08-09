@@ -8,9 +8,9 @@ public class MustaPatka {
     /**
      * Vaaka- tai pystyrivin yksittäinen musta alue.
      * 
-     * @param pituus    Mustan pätkän pituus (LB_i)
-     * @param pieninMahdAlkupiste   Ensimmäinen mahdollinen alkamispiste (r_js)
-     * @param suurinMahdLoppupiste  Viimeinen mahdollinen loppumispiste (r_je)
+     * @param pituus               Mustan pätkän pituus (LB_i)
+     * @param pieninMahdAlkupiste  Ensimmäinen mahdollinen alkamispiste (r_js)
+     * @param suurinMahdLoppupiste Viimeinen mahdollinen loppumispiste (r_je)
      */
     public MustaPatka(int pituus, int pieninMahdAlkupiste, int suurinMahdLoppupiste) {
         this.pituus = pituus;
@@ -30,7 +30,7 @@ public class MustaPatka {
         return this.suurinMahdLoppupiste;
     }
 
-    //SÄÄNNÖT
+    // SÄÄNNÖT
 
     // Osa 1
 
@@ -39,7 +39,8 @@ public class MustaPatka {
     /**
      * Laskee mustan pätkän varman mustan alueen.
      * 
-     * @return  Palauttaa varman mustan alueen alku- ja loppupisteen taulukkona. Jos varmaa aluetta ei ole, palauttaa null.
+     * @return Palauttaa varman mustan alueen alku- ja loppupisteen taulukkona. Jos
+     *         varmaa aluetta ei ole, palauttaa null.
      */
     public int[] varmaMustaAlkuLoppu() {
         int u = (this.suurinMahdLoppupiste - this.pieninMahdAlkupiste + 1) - this.pituus;
@@ -47,10 +48,43 @@ public class MustaPatka {
         int loppu = this.suurinMahdLoppupiste - u;
 
         if (alku <= loppu) {
-            int[] alkuLoppu = {alku, loppu};
+            int[] alkuLoppu = { alku, loppu };
             return alkuLoppu;
         } else {
             return null;
         }
+    }
+
+    // Sääntö 1.2
+
+    /**
+     * Laskee mustien pätkien ulkopuolelle jäävät valkoiset ruudut.
+     * 
+     * @param edellinen Mustaa pätkää edeltävä musta pätkä samalla rivillä. null, jos edeltävää ei ole.
+     * @param seuraava  Mustaa pätkää seuraava musta pätkä samalla rivillä. null, jos seuraavaa ei ole.
+     * @param rivinPituus Rivin kokonaispituus.
+     * @return  Valkoisten alueiden alku- ja loppupisteet. {{alkupiste edellä, loppupiste edellä}, {alkupiste perässä, loppupiste perässä}}
+     */
+    public int[][] mustanPatkanUlkopuolisetValkoiset(MustaPatka edellinen, MustaPatka seuraava, int rivinPituus) {
+        int[][] valkoiset = {{-1, -1}, {-1, -1}};
+
+        if (edellinen == null && this.pieninMahdAlkupiste > 0) {
+            valkoiset[0][0] = 0;
+            valkoiset[0][1] = this.pieninMahdAlkupiste - 1;
+        }
+
+        if (seuraava == null) {
+            if (this.suurinMahdLoppupiste < rivinPituus - 1) {
+                valkoiset[1][0] = this.suurinMahdLoppupiste + 1;
+                valkoiset[1][1] = rivinPituus - 1;
+            }
+        } else {
+            if (this.suurinMahdLoppupiste < seuraava.getPieninMahdAlkupiste() - 1) {
+                valkoiset[1][0] = this.suurinMahdLoppupiste + 1;
+                valkoiset[1][1] = seuraava.getPieninMahdAlkupiste() - 1;
+            }
+        }
+
+        return valkoiset;
     }
 }

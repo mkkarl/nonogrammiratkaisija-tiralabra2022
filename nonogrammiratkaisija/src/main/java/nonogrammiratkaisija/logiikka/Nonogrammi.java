@@ -109,4 +109,27 @@ public class Nonogrammi {
             }
         }
     }
+
+    public void saanto12() {
+        for (int i = 0; i < rivit.length; i++) {
+
+            int rivinPituus = 0;
+
+            if (rivit[i] instanceof Vaakarivi) {
+                rivinPituus = ruudukko[0].length;
+            } else {
+                rivinPituus = ruudukko.length;
+            }
+
+            int[][] koordinaatit = rivit[i].patkienUlkuopuolisetValkoisetKoordinaatit(rivinPituus);
+
+            if (koordinaatit == null) {
+                continue;
+            }
+
+            for (int j = 0; j < koordinaatit.length; j++) {
+                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();;
+            }
+        }
+    }
 }

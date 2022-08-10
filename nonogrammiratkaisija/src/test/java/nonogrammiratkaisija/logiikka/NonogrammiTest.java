@@ -119,4 +119,16 @@ public class NonogrammiTest {
         nonogrammi2.saanto11();
         assertEquals("MUSTA", nonogrammi2.getRuudukko()[0][0].getTila().toString());
     }
+
+    @Test
+    public void ruutuOnValkoinenSaanto12() {
+        nonogrammi1.saanto12();
+        assertEquals("VALKOINEN", nonogrammi1.getRuudukko()[0][0].getTila().toString());
+    }
+
+    @Test
+    public void ruutuEiOleValkoinenSaanto12() {
+        nonogrammi2.saanto12();
+        assertNotEquals("VALKOINEN", nonogrammi2.getRuudukko()[0][0].getTila().toString());
+    }
 }

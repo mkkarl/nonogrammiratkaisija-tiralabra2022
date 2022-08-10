@@ -22,5 +22,6 @@ public class Sovelluslogiikka {
      */
     public void ratkaiseNonogrammi() {
         nonogrammi.saanto11();
+        nonogrammi.saanto12();
     }
 }

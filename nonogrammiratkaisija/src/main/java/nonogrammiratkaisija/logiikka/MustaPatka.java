@@ -65,23 +65,23 @@ public class MustaPatka {
      * @param rivinPituus Rivin kokonaispituus.
      * @return  Valkoisten alueiden alku- ja loppupisteet. {{alkupiste edellä, loppupiste edellä}, {alkupiste perässä, loppupiste perässä}}
      */
-    public int[][] mustanPatkanUlkopuolisetValkoiset(MustaPatka edellinen, MustaPatka seuraava, int rivinPituus) {
-        int[][] valkoiset = {{-1, -1}, {-1, -1}};
+    public int[] mustanPatkanUlkopuolisetValkoiset(MustaPatka edellinen, MustaPatka seuraava, int rivinPituus) {
+        int[] valkoiset = {-1, -1, -1, -1};
 
         if (edellinen == null && this.pieninMahdAlkupiste > 0) {
-            valkoiset[0][0] = 0;
-            valkoiset[0][1] = this.pieninMahdAlkupiste - 1;
+            valkoiset[0] = 0;
+            valkoiset[1] = this.pieninMahdAlkupiste - 1;
         }
 
         if (seuraava == null) {
             if (this.suurinMahdLoppupiste < rivinPituus - 1) {
-                valkoiset[1][0] = this.suurinMahdLoppupiste + 1;
-                valkoiset[1][1] = rivinPituus - 1;
+                valkoiset[2] = this.suurinMahdLoppupiste + 1;
+                valkoiset[3] = rivinPituus - 1;
             }
         } else {
             if (this.suurinMahdLoppupiste < seuraava.getPieninMahdAlkupiste() - 1) {
-                valkoiset[1][0] = this.suurinMahdLoppupiste + 1;
-                valkoiset[1][1] = seuraava.getPieninMahdAlkupiste() - 1;
+                valkoiset[2] = this.suurinMahdLoppupiste + 1;
+                valkoiset[3] = seuraava.getPieninMahdAlkupiste() - 1;
             }
         }
 

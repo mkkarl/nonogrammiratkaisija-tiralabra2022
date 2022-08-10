@@ -91,6 +91,11 @@ public class MustaPatka {
         return valkoiset;
     }
 
+    /**
+     * Laskee rivin alussa olevat valkoiset ruudut.
+     * 
+     * @return  {alkupiste, loppupiste}
+     */
     public int[] valkoisetRivinAlussa() {
         int[] valkoiset = { -1, -1 };
 
@@ -102,6 +107,12 @@ public class MustaPatka {
         return valkoiset;
     }
 
+    /**
+     * Laskee mustan pätkän ja seuraavan pätkän väliin jäävät valkoiset ruudut.
+     * 
+     * @param seuraava  Seuraava musta pätkä (i+1)
+     * @return  {alkupiste, loppupiste}
+     */
     public int[] valkoisetPatkienValissa(MustaPatka seuraava) {
         int[] valkoiset = { -1, -1 };
 
@@ -113,6 +124,12 @@ public class MustaPatka {
         return valkoiset;
     }
 
+    /**
+     * Laskee rivin lopussa olevat valkoiset ruudut.
+     * 
+     * @param rivinPituus   Rivin pituus
+     * @return  {alkupiste, loppupiste}
+     */
     public int[] valkoisetRivinLopussa(int rivinPituus) {
         int[] valkoiset = { -1, -1 };
 

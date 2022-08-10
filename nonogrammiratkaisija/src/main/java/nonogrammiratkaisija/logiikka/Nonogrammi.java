@@ -110,6 +110,9 @@ public class Nonogrammi {
         }
     }
 
+    /**
+     * Toteuttaa säännön 1.2.
+     */
     public void saanto12() {
         for (int i = 0; i < rivit.length; i++) {
 

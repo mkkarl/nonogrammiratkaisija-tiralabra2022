@@ -73,13 +73,25 @@ public class Kayttoliittyma {
 
     private void tulostaNonogrammi() {
         Ruutu[][] ruudukko = this.sovelluslogiikka.getNonogrammi().getRuudukko();
+        int leveys = ruudukko[0].length;
+
+        String ylaAlaReuna = "+";
+
+        for (int i = 0; i < leveys; i++) {
+            ylaAlaReuna += "-";
+        }
+
+        ylaAlaReuna += "+";
+
+        System.out.println("\n" + ylaAlaReuna);
 
         for (int i = 0; i < ruudukko.length; i++) {
+            System.out.print("|");
             for (int j = 0; j < ruudukko[0].length;j++) {
                 String ruudunTila = ruudukko[i][j].getTila().toString();
 
                 if (ruudunTila.equals("TUNTEMATON")) {
-                    System.out.print("-");
+                    System.out.print("?");
                 } else if (ruudunTila.equals("VALKOINEN")) {
                     System.out.print(" ");
                 } else if (ruudunTila.equals("MUSTA")) {
@@ -87,11 +99,13 @@ public class Kayttoliittyma {
                 } else if (ruudunTila.equals("VIRHE")) {
                     System.out.print("X");
                 } else {
-                    System.out.print("Ö");
+                    System.out.print("Ä");
                 }
             }
-            System.out.println();
+            System.out.println("|");
         }
+
+        System.out.println(ylaAlaReuna + "\n");
     }
 
     

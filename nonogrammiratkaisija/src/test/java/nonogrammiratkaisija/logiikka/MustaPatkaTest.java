@@ -14,6 +14,7 @@ public class MustaPatkaTest {
     MustaPatka patka3;
     MustaPatka patka4;
     MustaPatka patka5;
+    MustaPatka patka6;
     
     public MustaPatkaTest() {
     }
@@ -33,6 +34,7 @@ public class MustaPatkaTest {
         patka3 = new MustaPatka(4, 2, 7);
         patka4 = new MustaPatka(2, 8, 10);
         patka5 = new MustaPatka(2, 9, 10);
+        patka6 = new MustaPatka(2, 10, 11);
 
     }
 
@@ -98,5 +100,46 @@ public class MustaPatkaTest {
         int[] vertaus5 = {0, 1, 8, 8};
         assertArrayEquals(vertaus5, tulos5);
 
+    }
+
+    @Test
+    public void valkoisetRivinAlussaOikein() {
+        int[] tulos1 = patka1.valkoisetRivinAlussa();
+        int[] vertaus1 = {0, 2};
+        assertArrayEquals(vertaus1, tulos1);
+
+        int[] tulos2 = patka2.valkoisetRivinAlussa();
+        int[] vertaus2 = {-1, -1};
+        assertArrayEquals(vertaus2, tulos2);
+    }
+
+    @Test
+    public void valkoisetPatkienValissaOikein() {
+        int[] tulos1 = patka3.valkoisetPatkienValissa(patka4);
+        int[] vertaus1 = {-1, -1};
+        assertArrayEquals(vertaus1, tulos1);
+
+        int[] tulos2 = patka3.valkoisetPatkienValissa(patka5);
+        int[] vertaus2 = {8, 8};
+        assertArrayEquals(vertaus2, tulos2);
+
+        int[] tulos3 = patka3.valkoisetPatkienValissa(patka6);
+        int[] vertaus3 = {8, 9};
+        assertArrayEquals(vertaus3, tulos3);
+    }
+
+    @Test
+    public void valkoisetRivinLopussaOikein() {
+        int[] tulos1 = patka1.valkoisetRivinLopussa(10);
+        int[] vertaus1 = {-1, -1};
+        assertArrayEquals(vertaus1, tulos1);
+
+        int[] tulos2 = patka1.valkoisetRivinLopussa(11);
+        int[] vertaus2 = {10, 10};
+        assertArrayEquals(vertaus2, tulos2);
+
+        int[] tulos3 = patka1.valkoisetRivinLopussa(12);
+        int[] vertaus3 = {10, 11};
+        assertArrayEquals(vertaus3, tulos3);
     }
 }

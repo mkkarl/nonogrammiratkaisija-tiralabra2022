@@ -31,6 +31,17 @@ public class Vaakarivi extends Rivi {
         return koordinaatit;
     }
 
+    // Sääntö 1.2
+
+    @Override
+    public int[][] patkienUlkuopuolisetValkoisetKoordinaatit(int rivinPituus) {
+        int[][] valkoiset = super.valkoisetAlkuLoppu(rivinPituus);
+
+        int[][] koordinaatit = this.koordinaattilaskuri(valkoiset);
+
+        return koordinaatit;
+    }
+
     // apumetodeja
 
     private int[][] koordinaattilaskuri(int[][] alutLoputPituudet) {

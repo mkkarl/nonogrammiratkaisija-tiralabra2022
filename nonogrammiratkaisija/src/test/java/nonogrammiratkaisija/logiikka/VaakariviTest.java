@@ -12,6 +12,8 @@ public class VaakariviTest {
     Vaakarivi tyhjaRivi;
     Vaakarivi yhdenRivi;
     Vaakarivi neljanRivi;
+    Vaakarivi rivi3;
+    Vaakarivi rivi4;
 
     public VaakariviTest() {
 
@@ -38,6 +40,14 @@ public class VaakariviTest {
         patkat2[0] = new MustaPatka(4, 2, 7);
 
         neljanRivi = new Vaakarivi(4, patkat2);
+
+        MustaPatka patka1 = new MustaPatka(2, 0, 3);
+        MustaPatka patka2 = new MustaPatka(3, 3, 7);
+        MustaPatka[] patkat3 = {patka1, patka2};
+        rivi3 = new Vaakarivi(5, patkat3);
+
+        MustaPatka[] patkat4 = {new MustaPatka(2, 0, 2)};
+        rivi4 = new Vaakarivi(2, patkat4);
     }
 
     @After
@@ -74,6 +84,8 @@ public class VaakariviTest {
         assertFalse(valmis);
     }
 
+    // Sääntö 1.1
+
     @Test
     public void varmojenMustienAlkuJaLoppuOikein() {
         int[][] varmatTyhja = tyhjaRivi.varmatMustatAlkuLoppu();
@@ -101,5 +113,26 @@ public class VaakariviTest {
         int[][] vertaus2 = {{4, 4}, {4, 5}};
 
         assertArrayEquals(vertaus2, varmat2);
+    }
+
+    // Sääntö 1.2
+
+    @Test
+    public void valkoistenKoordinaatitOikein() {
+        int[][] tulos1 = tyhjaRivi.patkienUlkuopuolisetValkoisetKoordinaatit(2);
+        int[][] vertaus1 = {{2, 0}, {2, 1}};
+        assertArrayEquals(vertaus1, tulos1);
+
+        int[][] tulos2 = yhdenRivi.patkienUlkuopuolisetValkoisetKoordinaatit(7);
+        int[][] vertaus2 = {{3, 0}, {3, 1}, {3, 2}};
+        assertArrayEquals(vertaus2, tulos2);
+
+        int[][] tulos3 = rivi3.patkienUlkuopuolisetValkoisetKoordinaatit(8);
+        int[][] vertaus3 = null;
+        assertArrayEquals(vertaus3, tulos3);
+
+        int[][] tulos4 = rivi4.patkienUlkuopuolisetValkoisetKoordinaatit(4);
+        int[][] vertaus4 = {{2, 3}};
+        assertArrayEquals(vertaus4, tulos4);
     }
 }

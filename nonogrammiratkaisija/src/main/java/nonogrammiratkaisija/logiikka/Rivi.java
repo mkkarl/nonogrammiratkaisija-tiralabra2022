@@ -140,7 +140,7 @@ public abstract class Rivi {
             int[] alkupiste = ruudunKoordinaatit(this.patkat[j].getPieninMahdAlkupiste());
             int[] loppupiste = ruudunKoordinaatit(this.patkat[j].getSuurinMahdLoppupiste());
 
-            if (ruudukko[alkupiste[0]][alkupiste[1]].getTila() == RuudunTila.MUSTA) {
+            if (ruudukko[alkupiste[0]][alkupiste[1]].getTila() == RuudunTila.MUSTA && j != 0) {
                 boolean eteenValkoinen = true;
 
                 for (int i = 0; i < j; i++) {
@@ -156,7 +156,7 @@ public abstract class Rivi {
                 }
             }
 
-            if (ruudukko[loppupiste[0]][loppupiste[1]].getTila() == RuudunTila.MUSTA) {
+            if (ruudukko[loppupiste[0]][loppupiste[1]].getTila() == RuudunTila.MUSTA && j != this.patkat.length - 1) {
                 boolean peraanValkoinen = true;
 
                 for (int i = j + 1; i < this.patkat.length; i++) {

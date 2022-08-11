@@ -15,3 +15,11 @@ Aloitettu säännön 1.2 työstö.
 Sääntö 1.2 valmiiksi.
 
 (n. 4,5h)
+
+**Torstai**
+
+Opin, että yläluokassa abstraktien metodien määreenä voi käyttää `protected`, jolloin metodia voi hyödyntää alaluokissa tehtävänä varsinaisena metodina, jota hyödynnetään yläluokan metodissa. Tämän perusteella luokista `Vaakarivi` ja `Pystyrivi` poistettu toisteisuus.
+
+Sääntö 1.3 toteutettu.
+
+(n. 5h)

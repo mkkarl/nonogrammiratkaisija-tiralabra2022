@@ -131,7 +131,24 @@ public class Nonogrammi {
             }
 
             for (int j = 0; j < koordinaatit.length; j++) {
-                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();;
+                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
+            }
+        }
+    }
+
+    /**
+     * Toteuttaa säännön 1.3
+     */
+    public void saanto13() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] koordinaatit = rivit[i].saanto13valkoistenKoordinaatit(ruudukko);
+
+            if (koordinaatit == null) {
+                continue;
+            }
+
+            for (int j = 0; j < koordinaatit.length; j++) {
+                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
             }
         }
     }

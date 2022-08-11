@@ -12,39 +12,9 @@ public class Vaakarivi extends Rivi {
         super(rivinumero, patkat);
     }
 
-    // SÄÄNNÖT
-
-    // Osa 1
-
-    // Sääntö 1.1
-
-    @Override
-    public int[][] varmojenMustienKoordinaatit() {
-        int[][] varmat = super.varmatMustatAlkuLoppu();
-
-        if (varmat == null) {
-            return null;
-        }
-
-        int[][] koordinaatit = this.koordinaattilaskuri(varmat);
-
-        return koordinaatit;
-    }
-
-    // Sääntö 1.2
-
-    @Override
-    public int[][] patkienUlkuopuolisetValkoisetKoordinaatit(int rivinPituus) {
-        int[][] valkoiset = super.valkoisetAlkuLoppu(rivinPituus);
-
-        int[][] koordinaatit = this.koordinaattilaskuri(valkoiset);
-
-        return koordinaatit;
-    }
-
     // apumetodeja
 
-    private int[][] koordinaattilaskuri(int[][] alutLoputPituudet) {
+    protected int[][] koordinaattilaskuri(int[][] alutLoputPituudet) {
 
         int ruudutYhteensa = 0;
 

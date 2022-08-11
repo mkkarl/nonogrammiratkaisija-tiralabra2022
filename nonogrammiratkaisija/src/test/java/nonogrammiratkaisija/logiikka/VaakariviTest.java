@@ -87,20 +87,6 @@ public class VaakariviTest {
     // Sääntö 1.1
 
     @Test
-    public void varmojenMustienAlkuJaLoppuOikein() {
-        int[][] varmatTyhja = tyhjaRivi.varmatMustatAlkuLoppu();
-        assertNull(varmatTyhja);
-
-        int[][] varmat1 = yhdenRivi.varmatMustatAlkuLoppu();
-        int[][] vertaus1 = {{-1, -1, 0}};
-        assertArrayEquals(vertaus1, varmat1);
-
-        int[][] varmat2 = neljanRivi.varmatMustatAlkuLoppu();
-        int[][] vertaus2 = {{4, 5, 2}};
-        assertArrayEquals(vertaus2, varmat2);
-    }
-
-    @Test
     public void varmojenKoordinaatitOikein() {
         int[][] varmatTyhja = tyhjaRivi.varmojenMustienKoordinaatit();
 

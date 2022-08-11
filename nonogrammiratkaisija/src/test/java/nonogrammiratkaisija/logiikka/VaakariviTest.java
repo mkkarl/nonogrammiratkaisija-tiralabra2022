@@ -121,4 +121,54 @@ public class VaakariviTest {
         int[][] vertaus4 = {{2, 3}};
         assertArrayEquals(vertaus4, tulos4);
     }
+
+    // Sääntö 1.3
+
+    @Test
+    public void saanto13valkoistenKoordinaatitOikein() {
+        MustaPatka patkaA = new MustaPatka(2, 0, 3);
+        MustaPatka patkaB = new MustaPatka(1, 3, 5);
+        MustaPatka patkaC = new MustaPatka(1, 5, 7);
+        MustaPatka patkaD = new MustaPatka(3, 7, 11);
+        MustaPatka[] patkatFig8 = {patkaA, patkaB, patkaC, patkaD};
+        Vaakarivi riviFig8 = new Vaakarivi(0, patkatFig8);
+        Ruutu[][] ruudukko = new Ruutu[1][12];
+        for (int i = 0; i < ruudukko[0].length; i++) {
+            ruudukko[0][i] = new Ruutu();
+        }
+        ruudukko[0][7].setMusta();
+        ruudukko[0][9].setMusta();
+        int[][] koordinaatitFig8 = riviFig8.saanto13valkoistenKoordinaatit(ruudukko);
+        int[][] vertausFig8 = {{0, 6}};
+
+        assertArrayEquals(vertausFig8, koordinaatitFig8);
+
+        MustaPatka patkaE = new MustaPatka(3, 0, 4);
+        MustaPatka patkaF = new MustaPatka(1, 4, 6);
+        MustaPatka patkaG = new MustaPatka(1, 6, 8);
+        MustaPatka patkaH = new MustaPatka(2, 8, 11);
+        MustaPatka[] patkatFig8rev = {patkaE, patkaF, patkaG, patkaH};
+        Vaakarivi riviFig8rev = new Vaakarivi(0, patkatFig8rev);
+        Ruutu[][] ruudukkoRev = new Ruutu[1][12];
+        for (int i = 0; i < ruudukkoRev[0].length; i++) {
+            ruudukkoRev[0][i] = new Ruutu();
+        }
+        ruudukkoRev[0][2].setMusta();
+        ruudukkoRev[0][4].setMusta();
+        int[][] koordinaatitFig8rev = riviFig8rev.saanto13valkoistenKoordinaatit(ruudukkoRev);
+        int[][] vertausFig8rev = {{0, 5}};
+
+        assertArrayEquals(vertausFig8rev, koordinaatitFig8rev);
+
+        Ruutu[][] ruudukkoX = new Ruutu[1][12];
+        for (int i = 0; i < ruudukkoX[0].length; i++) {
+            ruudukkoX[0][i] = new Ruutu();
+        }
+        int[][] koordinaatitFig8X = riviFig8.saanto13valkoistenKoordinaatit(ruudukkoX);
+        int[][] vertausFig8X = null;
+
+        assertArrayEquals(vertausFig8X, koordinaatitFig8X);
+
+        assertNull(tyhjaRivi.saanto13valkoistenKoordinaatit(ruudukkoX));
+    }
 }

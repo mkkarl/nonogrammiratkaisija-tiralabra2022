@@ -98,5 +98,26 @@ public class PystyriviTest {
         int[][] vertaus4 = {{3, 2}};
         assertArrayEquals(vertaus4, tulos4);
     }
-    
+
+    // Sääntö 1.3
+
+    @Test
+    public void saanto13valkoistenKoordinaatitOikein() {
+        MustaPatka patkaA = new MustaPatka(2, 0, 3);
+        MustaPatka patkaB = new MustaPatka(1, 3, 5);
+        MustaPatka patkaC = new MustaPatka(1, 5, 7);
+        MustaPatka patkaD = new MustaPatka(3, 7, 11);
+        MustaPatka[] patkatFig8 = {patkaA, patkaB, patkaC, patkaD};
+        Pystyrivi riviFig8 = new Pystyrivi(0, patkatFig8);
+        Ruutu[][] ruudukko = new Ruutu[12][1];
+        for (int i = 0; i < ruudukko.length; i++) {
+            ruudukko[i][0] = new Ruutu();
+        }
+        ruudukko[7][0].setMusta();
+        ruudukko[9][0].setMusta();
+        int[][] koordinaatitFig8 = riviFig8.saanto13valkoistenKoordinaatit(ruudukko);
+        int[][] vertausFig8 = {{6, 0}};
+
+        assertArrayEquals(vertausFig8, koordinaatitFig8);
+    }
 }

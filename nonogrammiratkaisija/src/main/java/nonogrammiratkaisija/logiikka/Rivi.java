@@ -1,5 +1,7 @@
 package nonogrammiratkaisija.logiikka;
 
+import java.util.ArrayList;
+
 public abstract class Rivi {
     private int rivinumero;
     private boolean valmis;
@@ -66,8 +68,6 @@ public abstract class Rivi {
         return koordinaatit;
     }
 
-
-
     // Sääntö 1.2
 
     /**
@@ -126,8 +126,72 @@ public abstract class Rivi {
         return koordinaatit;
     }
 
+    // Sääntö 1.3
+
+    public int[][] saanto13valkoistenKoordinaatit(Ruutu[][] ruudukko) {
+
+        if (this.patkat == null) {
+            return null;
+        }
+        
+        ArrayList<Integer> indeksit = new ArrayList<>();
+
+        for (int j = 0; j < this.patkat.length; j++) {
+            int[] alkupiste = ruudunKoordinaatit(this.patkat[j].getPieninMahdAlkupiste());
+            int[] loppupiste = ruudunKoordinaatit(this.patkat[j].getSuurinMahdLoppupiste());
+
+            if (ruudukko[alkupiste[0]][alkupiste[1]].getTila() == RuudunTila.MUSTA) {
+                boolean eteenValkoinen = true;
+
+                for (int i = 0; i < j; i++) {
+                    if (patkat[i].getSuurinMahdLoppupiste() >= patkat[j].getPieninMahdAlkupiste()) {
+                        if (patkat[i].getPituus() != 1) {
+                            eteenValkoinen = false;
+                        }
+                    }
+                }
+
+                if (eteenValkoinen) {
+                    indeksit.add(this.patkat[j].getPieninMahdAlkupiste() - 1);
+                }
+            }
+
+            if (ruudukko[loppupiste[0]][loppupiste[1]].getTila() == RuudunTila.MUSTA) {
+                boolean peraanValkoinen = true;
+
+                for (int i = j + 1; i < this.patkat.length; i++) {
+                    if (patkat[i].getPieninMahdAlkupiste() <= patkat[j].getSuurinMahdLoppupiste()) {
+                        if (patkat[i].getPituus() != 1) {
+                            peraanValkoinen = false;
+                        }
+                    }
+                }
+
+                if (peraanValkoinen && !indeksit.contains(this.patkat[j].getSuurinMahdLoppupiste() + 1)) {
+                    indeksit.add(this.patkat[j].getSuurinMahdLoppupiste() + 1);
+                }
+            }
+        }
+
+        if (indeksit.size() == 0) {
+            return null;
+        }
+
+        int[][] koordinaatit = new int[indeksit.size()][2];
+
+        for (int i = 0; i < indeksit.size(); i++) {
+            int[] rk = ruudunKoordinaatit(indeksit.get(i));
+            koordinaatit[i][0] = rk[0];
+            koordinaatit[i][1] = rk[1];
+        }
+
+        return koordinaatit;
+    }
+
     // apumetodeja
 
     protected abstract int[][] koordinaattilaskuri(int[][] alutLoputPituudet);
+
+    protected abstract int[] ruudunKoordinaatit(int indeksi);
 
 }

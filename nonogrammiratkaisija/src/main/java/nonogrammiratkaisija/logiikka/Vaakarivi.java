@@ -42,4 +42,9 @@ public class Vaakarivi extends Rivi {
 
     }
 
+    protected int[] ruudunKoordinaatit(int indeksi) {
+        int[] koordinaatit = {super.getRivinumero(), indeksi};
+        return koordinaatit;
+    }
+
 }

@@ -39,4 +39,9 @@ public class Pystyrivi extends Rivi {
 
         return koordinaatit;
     }
+
+    protected int[] ruudunKoordinaatit(int indeksi) {
+        int[] koordinaatit = {indeksi, super.getRivinumero()};
+        return koordinaatit;
+    }
 }

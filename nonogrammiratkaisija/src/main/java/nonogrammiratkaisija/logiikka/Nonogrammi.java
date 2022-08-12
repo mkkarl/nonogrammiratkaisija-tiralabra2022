@@ -1,7 +1,7 @@
 package nonogrammiratkaisija.logiikka;
 
 public class Nonogrammi {
-    private Ruutu[][] ruudukko;
+    private Ruudukko ruudukko;
     private Rivi[] rivit;
 
     /**
@@ -11,13 +11,15 @@ public class Nonogrammi {
      * @param pystyrivit    Nonogrammin pystyrivien numerot ylhäältä alas ja vasemmalta oikealle taulukkona
      */
     public Nonogrammi(String[] vaakarivit, String[] pystyrivit) {
-        this.ruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
+        Ruutu [][] apuruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
 
-        for (int i = 0; i < ruudukko.length; i++) {
-            for (int j = 0; j < ruudukko[0].length; j++) {
-                ruudukko[i][j] = new Ruutu();
+        for (int i = 0; i < apuruudukko.length; i++) {
+            for (int j = 0; j < apuruudukko[0].length; j++) {
+                apuruudukko[i][j] = new Ruutu();
             }
         }
+
+        this.ruudukko = new Ruudukko(apuruudukko);
 
         this.rivit = new Rivi[vaakarivit.length + pystyrivit.length];
 
@@ -82,7 +84,7 @@ public class Nonogrammi {
     }
 
     public Ruutu[][] getRuudukko() {
-        return this.ruudukko;
+        return this.ruudukko.getRuudukko();
     }
 
     public Rivi[] getRivit() {
@@ -105,7 +107,7 @@ public class Nonogrammi {
             }
 
             for (int j = 0; j < koordinaatit.length; j++) {
-                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setMusta();
+                ruudukko.getRuudukko()[koordinaatit[j][0]][koordinaatit[j][1]].setMusta();
             }
         }
     }
@@ -119,9 +121,9 @@ public class Nonogrammi {
             int rivinPituus = 0;
 
             if (rivit[i] instanceof Vaakarivi) {
-                rivinPituus = ruudukko[0].length;
+                rivinPituus = ruudukko.getRuudukko()[0].length;
             } else {
-                rivinPituus = ruudukko.length;
+                rivinPituus = ruudukko.getRuudukko().length;
             }
 
             int[][] koordinaatit = rivit[i].patkienUlkuopuolisetValkoisetKoordinaatit(rivinPituus);
@@ -131,7 +133,7 @@ public class Nonogrammi {
             }
 
             for (int j = 0; j < koordinaatit.length; j++) {
-                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
+                ruudukko.getRuudukko()[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
             }
         }
     }
@@ -141,14 +143,14 @@ public class Nonogrammi {
      */
     public void saanto13() {
         for (int i = 0; i < rivit.length; i++) {
-            int[][] koordinaatit = rivit[i].saanto13valkoistenKoordinaatit(ruudukko);
+            int[][] koordinaatit = rivit[i].saanto13valkoistenKoordinaatit(ruudukko.getRuudukko());
 
             if (koordinaatit == null) {
                 continue;
             }
 
             for (int j = 0; j < koordinaatit.length; j++) {
-                ruudukko[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
+                ruudukko.getRuudukko()[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
             }
         }
     }

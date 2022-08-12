@@ -128,6 +128,12 @@ public abstract class Rivi {
 
     // Sääntö 1.3
 
+    /**
+     * Laskee säännön 1.3 mukaisten valkoisten ruutujen koordinaatit rivillä.
+     * 
+     * @param ruudukko  Nonogrammin ruudut
+     * @return  Valkoisten ruutujen koordinaatit {x, y}
+     */
     public int[][] saanto13valkoistenKoordinaatit(Ruutu[][] ruudukko) {
 
         if (this.patkat == null) {

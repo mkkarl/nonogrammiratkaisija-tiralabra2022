@@ -9,7 +9,7 @@ public class Vaakarivi extends Rivi {
      * @param patkat     Vaakarivin mustat pätkät taulukkona
      */
     public Vaakarivi(int rivinumero, MustaPatka[] patkat) {
-        super(rivinumero, patkat);
+        super(rivinumero, patkat, true);
     }
 
     // apumetodeja

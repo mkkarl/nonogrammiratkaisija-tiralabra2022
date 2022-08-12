@@ -61,6 +61,11 @@ public class PystyriviTest {
         assertEquals(2, rivinroTyhja);
     }
 
+    @Test
+    public void eiOleVaakarivi() {
+        assertFalse(tyhjaRivi.onVaakarivi());
+    }
+
     // Sääntö 1.1
 
     @Test

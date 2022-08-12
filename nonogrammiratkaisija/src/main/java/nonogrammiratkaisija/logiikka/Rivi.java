@@ -6,6 +6,7 @@ public abstract class Rivi {
     private int rivinumero;
     private boolean valmis;
     private MustaPatka[] patkat;
+    private boolean onVaakarivi;
 
     /**
      * Nonogrammin rivi.
@@ -13,10 +14,11 @@ public abstract class Rivi {
      * @param rivinumero Rivinumero, numerointi alkaa nollasta
      * @param patkat     Rivin mustat pätkät taulukkona
      */
-    public Rivi(int rivinumero, MustaPatka[] patkat) {
+    public Rivi(int rivinumero, MustaPatka[] patkat, boolean onVaakarivi) {
         this.rivinumero = rivinumero;
         this.valmis = false;
         this.patkat = patkat;
+        this.onVaakarivi = onVaakarivi;
     }
 
     public int getRivinumero() {
@@ -29,6 +31,10 @@ public abstract class Rivi {
 
     public MustaPatka[] getPatkat() {
         return this.patkat;
+    }
+
+    public boolean onVaakarivi() {
+        return this.onVaakarivi;
     }
 
     // SÄÄNNÖT

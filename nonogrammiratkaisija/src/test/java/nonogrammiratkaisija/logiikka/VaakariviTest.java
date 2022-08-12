@@ -84,6 +84,11 @@ public class VaakariviTest {
         assertFalse(valmis);
     }
 
+    @Test
+    public void onVaakarivi() {
+        assertTrue(tyhjaRivi.onVaakarivi());
+    }
+
     // Sääntö 1.1
 
     @Test

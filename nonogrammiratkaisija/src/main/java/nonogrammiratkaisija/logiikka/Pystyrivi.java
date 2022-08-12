@@ -9,7 +9,7 @@ public class Pystyrivi extends Rivi {
      * @param patkat     Pystyrivin mustat pätkät taulukkona
      */
     public Pystyrivi(int rivinumero, MustaPatka[] patkat) {
-        super(rivinumero, patkat);
+        super(rivinumero, patkat, false);
     }
 
     // apumetodeja

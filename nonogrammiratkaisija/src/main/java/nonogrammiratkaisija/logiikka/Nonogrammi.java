@@ -154,4 +154,21 @@ public class Nonogrammi {
             }
         }
     }
+
+    /**
+     * Toteuttaa säännön 1.4
+     */
+    public void saanto14() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] koordinaatit = rivit[i].saanto14valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+
+            if (koordinaatit == null) {
+                continue;
+            }
+
+            for (int j = 0; j < koordinaatit.length; j++) {
+                ruudukko.getRuudukko()[koordinaatit[j][0]][koordinaatit[j][1]].setValkoinen();
+            }
+        }
+    }
 }

@@ -176,4 +176,39 @@ public class VaakariviTest {
 
         assertNull(tyhjaRivi.saanto13valkoistenKoordinaatit(ruudukkoX));
     }
+
+    // Sääntö 1.4
+
+    @Test
+    public void saanto14valkoistenKoordinaatitOikein() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 2);
+        MustaPatka patkaB = new MustaPatka(3, 1, 6);
+        MustaPatka patkaC = new MustaPatka(1, 6, 9);
+        MustaPatka[] patkatFig9 = {patkaA, patkaB, patkaC};
+        Vaakarivi riviFig9 = new Vaakarivi(2, patkatFig9);
+        Ruutu[] ruudukonrivi = new Ruutu[10];
+        for (int i = 0; i < ruudukonrivi.length; i++) {
+            ruudukonrivi[i] = new Ruutu();
+        }
+        ruudukonrivi[2].setMusta();
+        ruudukonrivi[4].setMusta();
+        ruudukonrivi[5].setMusta();
+        int[][] koordinaatitFig9 = riviFig9.saanto14valkoistenKoordinaatit(ruudukonrivi);
+        int[][] vertausFig9 = {{2, 3}};
+
+        /* String mjono = "{";
+        for (int i = 0; i < koordinaatitFig9.length; i++) {
+            mjono += "{";
+            for (int j = 0; j < koordinaatitFig9[i].length; j++) {
+                mjono += koordinaatitFig9[i][j] + " ";
+            }
+            mjono += "}";
+        }
+        mjono += "}"; */
+
+        assertArrayEquals(vertausFig9, koordinaatitFig9);
+
+        Ruutu[] ruudukonriviTyhja = {new Ruutu(), new Ruutu()};
+        assertNull(tyhjaRivi.saanto14valkoistenKoordinaatit(ruudukonriviTyhja));
+    }
 }

@@ -149,8 +149,8 @@ public abstract class Rivi {
         ArrayList<Integer> indeksit = new ArrayList<>();
 
         for (int j = 0; j < this.patkat.length; j++) {
-            int[] alkupiste = ruudunKoordinaatit(this.patkat[j].getPieninMahdAlkupiste());
-            int[] loppupiste = ruudunKoordinaatit(this.patkat[j].getSuurinMahdLoppupiste());
+            int[] alkupiste = this.ruudunKoordinaatit(this.patkat[j].getPieninMahdAlkupiste());
+            int[] loppupiste = this.ruudunKoordinaatit(this.patkat[j].getSuurinMahdLoppupiste());
 
             if (ruudukko[alkupiste[0]][alkupiste[1]].getTila() == RuudunTila.MUSTA && j != 0) {
                 boolean eteenValkoinen = true;
@@ -192,7 +192,72 @@ public abstract class Rivi {
         int[][] koordinaatit = new int[indeksit.size()][2];
 
         for (int i = 0; i < indeksit.size(); i++) {
-            int[] rk = ruudunKoordinaatit(indeksit.get(i));
+            int[] rk = this.ruudunKoordinaatit(indeksit.get(i));
+            koordinaatit[i][0] = rk[0];
+            koordinaatit[i][1] = rk[1];
+        }
+
+        return koordinaatit;
+    }
+
+    // Sääntö 1.4
+
+    public int[][] saanto14valkoistenKoordinaatit(Ruutu[] ruudukonrivi) {
+        if (this.patkat == null) {
+            return null;
+        }
+
+        int mustatPituus1 = 0;
+        
+        ArrayList<Integer> indeksit = new ArrayList<>();
+
+        for (int i = 0; i < ruudukonrivi.length - 1; i++) {
+            if (ruudukonrivi[i].getTila() == RuudunTila.MUSTA) {
+                mustatPituus1++;
+            } else if (i > 0 ) {
+                if (ruudukonrivi[i].getTila() == RuudunTila.VALKOINEN) {
+                    mustatPituus1 = 0;
+                } else if (ruudukonrivi[i].getTila() == RuudunTila.TUNTEMATON && mustatPituus1 > 0) {
+                    int mustatPituus2 = 0;
+                    for (int j = i + 1; j < ruudukonrivi.length; j++) {
+                        
+                        if (ruudukonrivi[j].getTila() == RuudunTila.MUSTA) {
+                            mustatPituus2++;
+                        }
+                        
+                        if (ruudukonrivi[j].getTila() == RuudunTila.VALKOINEN || ruudukonrivi[j].getTila() == RuudunTila.TUNTEMATON || j == ruudukonrivi.length - 1) {
+                            if (mustatPituus2 > 0) {
+                                int yhteisPituus = mustatPituus1 + mustatPituus2 + 1;
+                                int pisin = 0;
+                                
+                                for (int k = 0; k < this.patkat.length; k++) {
+                                    if (this.patkat[k].getPieninMahdAlkupiste() <= i - 1 && this.patkat[k].getSuurinMahdLoppupiste() >= i + 1) {
+                                        if (pisin < this.patkat[k].getPituus()) {
+                                            pisin = this.patkat[k].getPituus();
+                                        }
+                                    }
+                                }
+
+                                if (pisin < yhteisPituus) {
+                                    indeksit.add(i);
+                                }
+                            }
+                            mustatPituus1 = 0;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (indeksit.size() == 0) {
+            return null;
+        }
+
+        int[][] koordinaatit = new int[indeksit.size()][2];
+
+        for (int i = 0; i < indeksit.size(); i++) {
+            int[] rk = this.ruudunKoordinaatit(indeksit.get(i));
             koordinaatit[i][0] = rk[0];
             koordinaatit[i][1] = rk[1];
         }

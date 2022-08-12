@@ -23,3 +23,9 @@ Opin, että yläluokassa abstraktien metodien määreenä voi käyttää `protec
 Sääntö 1.3 toteutettu.
 
 (n. 5h)
+
+**Perjantai**
+
+Tehty nonogrammiruudukolle oma luokka `Ruudukko`, jotta sääntöjen käsittelyä varten saa `Rivi`-olion metodeille syötettyä vain tarvittavan rivin ruudukosta. Tätä varten lisätty `Rivi`-oliolle `boolean onVaakarivi`. (n. 1h)
+
+Sääntö 1.4 toteutettu. (n. 4h)

@@ -293,7 +293,9 @@ public abstract class Rivi {
                 // 2.
                 int m = -1;
 
-                for (int k = i - 1; k >= i - lyhin + 1; k--) {
+                int alaraja = Math.max(i - lyhin + 1, 0);
+
+                for (int k = i - 1; k >= alaraja; k--) {
                     if (ruudukonRivi[k].getTila() == RuudunTila.VALKOINEN) {
                         m = k;
                         break;
@@ -311,7 +313,9 @@ public abstract class Rivi {
                 // 3.
                 int n = -1;
 
-                for (int k = i + 1; k <= i + lyhin - 1; k++) {
+                int ylaraja = Math.min(i + lyhin, ruudukonRivi.length);
+
+                for (int k = i + 1; k < ylaraja; k++) {
                     if (ruudukonRivi[k].getTila() == RuudunTila.VALKOINEN) {
                         n = k;
                         break;

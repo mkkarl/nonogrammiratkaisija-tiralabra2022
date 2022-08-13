@@ -196,19 +196,49 @@ public class VaakariviTest {
         int[][] koordinaatitFig9 = riviFig9.saanto14valkoistenKoordinaatit(ruudukonrivi);
         int[][] vertausFig9 = {{2, 3}};
 
-        /* String mjono = "{";
-        for (int i = 0; i < koordinaatitFig9.length; i++) {
-            mjono += "{";
-            for (int j = 0; j < koordinaatitFig9[i].length; j++) {
-                mjono += koordinaatitFig9[i][j] + " ";
-            }
-            mjono += "}";
-        }
-        mjono += "}"; */
-
         assertArrayEquals(vertausFig9, koordinaatitFig9);
 
         Ruutu[] ruudukonriviTyhja = {new Ruutu(), new Ruutu()};
         assertNull(tyhjaRivi.saanto14valkoistenKoordinaatit(ruudukonriviTyhja));
+    }
+
+    // Sääntö 1.5
+
+    @Test
+    public void saanto15mustienKoordinaatitOikein() {
+        MustaPatka patkaA = new MustaPatka(3, 0, 7);
+        MustaPatka patkaB = new MustaPatka(4, 4, 12);
+        MustaPatka[] patkatFig10 = {patkaA, patkaB};
+        Vaakarivi riviFig10 = new Vaakarivi(1, patkatFig10);
+        Ruutu[] ruudukonRiviFig10 = new Ruutu[13];
+        for (int i = 0; i < ruudukonRiviFig10.length; i++) {
+            ruudukonRiviFig10[i] = new Ruutu();
+        }
+        ruudukonRiviFig10[5].setMusta();
+        ruudukonRiviFig10[3].setValkoinen();
+        int[][] koordinaatitFig10 = riviFig10.saanto15mustienKoordinaatit(ruudukonRiviFig10);
+        int[][] vertausFig10 = {{1, 6}};
+
+        assertArrayEquals(vertausFig10, koordinaatitFig10);
+    }
+
+    @Test
+    public void saanto15valkoistenKoordinaatitOikein() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 3);
+        MustaPatka patkaB = new MustaPatka(2, 2, 6);
+        MustaPatka patkaC = new MustaPatka(2, 5, 9);
+        MustaPatka patkaD = new MustaPatka(3, 8, 13);
+        MustaPatka[] patkatFig11 = {patkaA, patkaB, patkaC, patkaD};
+        Vaakarivi riviFig11 = new Vaakarivi(0, patkatFig11);
+        Ruutu[] ruudukonRiviFig11 = new Ruutu[14];
+        for (int i = 0; i < ruudukonRiviFig11.length; i++) {
+            ruudukonRiviFig11[i] = new Ruutu();
+        }
+        ruudukonRiviFig11[5].setMusta();
+        ruudukonRiviFig11[6].setMusta();
+        int[][] koordinaatitFig11 = riviFig11.saanto15valkoistenKoordinaatit(ruudukonRiviFig11);
+        int[][] vertausFig11 = {{0, 4}, {0, 7}};
+
+        assertArrayEquals(vertausFig11, koordinaatitFig11);
     }
 }

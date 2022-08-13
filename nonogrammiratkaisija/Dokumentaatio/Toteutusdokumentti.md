@@ -20,7 +20,7 @@ Saadun syötteen perusteella luodaan taulukot `ruudukko[][]` ja `rivit[]`. Jokai
 
 Loogisissa säännöissä tarkastelun kohteena ovat joko mustat pätkät tai yksittäiset solut. Säännöt toteutetaan luokan `Rivi` metodeina, jotka tarvittaessa kutsuvat luokan `MustaPatka` metodeja. Jokainen sääntö toteutetaan omana metodina, jotta esimerkiksi testaus helpompaa.
 
-Rivit ovat taulukkona. Taulukkoa läpikäydessä käytetään boolean-muuttujaa, joka pitää kirjaa, onko kierroksella tehty muutoksia.
+Rivit ovat taulukkona. Taulukkoa läpikäydessä käytetään luokassa `Nonogrammi` boolean-muuttujaa, joka pitää kirjaa, onko kierroksella tehty muutoksia.
 
 ```
 boolean muutoksiaEdellisellaKierroksella = true
@@ -34,17 +34,13 @@ while(muutoksiaEdellisellaKierroksella)
             muutoksiaEdellisellaKierroksella = true
 ```
 
-*Voisiko muutosseurannan itse asiassa toteuttaa ruudukossa tai sen yhteydessä? jos ruutua muutetaan, niin boolean muuttujan arvo muuttuu. uuden kierroksen alussa arvo nollataan*
-
 Jos muutoksia ei ole tapahtunut, siirytään peruuttavaan hakuun ((*chronological*) *backtracking*).
 
 ### Peruuttava haku
 
 Peruuttavassa haussa käytetään apuna loogisia sääntöjä rajaamaan tutkittavien vaihtoehtojen määrää.
 
-Luokan `Nonogrammi` oliosta voidaan luoda kopioita ratkaisuvaihtoehtojen läpikäyntiä varten.
-
-*Perehdyn tämän vaiheen toteutukseen paremmin myöhemmin, viimeistään kun olen saanut loogiset säännöt toteutettua. Monet nonogrammit on ratkaistavissa pelkkien loogisten sääntöjenkin avulla.*
+Luokan `Nonogrammi` oliosta voidaan luoda kopioita ratkaisuvaihtoehtojen läpikäyntiä varten. Kun päädytään peruuttavan haun tilanteeseen, etsitään nonogrammista ensimmäinen rivi, joka ei ole vielä valmis ja luodaan uudet Nonogrammi-oliot näiden ratkaisuvaihtoehtojen pohjalta ja jatketaan ratkaisu(je)n etsimistä loogisten sääntöjen avulla.
 
 ## Omat tietorakenteet ja luokat
 

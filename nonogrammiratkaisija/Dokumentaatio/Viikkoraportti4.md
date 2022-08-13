@@ -29,3 +29,21 @@ Sääntö 1.3 toteutettu.
 Tehty nonogrammiruudukolle oma luokka `Ruudukko`, jotta sääntöjen käsittelyä varten saa `Rivi`-olion metodeille syötettyä vain tarvittavan rivin ruudukosta. Tätä varten lisätty `Rivi`-oliolle `boolean onVaakarivi`. (n. 1h)
 
 Sääntö 1.4 toteutettu. (n. 4h)
+
+**Pe-la yö**
+
+Sääntö 1.5 aloitettu. (n. 2,5h)
+
+**Lauantai**
+
+Sääntö 1.5 viimeistelty. (n. 1h)
+
+Raportointi: Hieman päivitetty toteutusdokumenttia. Viikkoraportin viimeistelyä. (n. 1h)
+
+Puuttuvien JavaDocien lisäys. (n. 0,25h)
+
+## Ajatuksia viikosta
+
+Koodia on tällä viikolla kirjoitettu yksikkötestien rivi- ja etenkin haaraumakattavuuksien kustannuksella. Osan 1 säännöt on nyt saatu toteutettua. Ainakin säännöt 1.3 ja 1.4 tuntuivat vaativan paljon sanallisen kuvauksen ymmärtämistä, mikä tuntui hidastavan koodin kirjoittamista ja vaati asian pohtimista melko paljon ennen varsinaista koodin kirjoittamista. Sääntö 1.5 sen sijaan oli selkeästi kirjoitettu matemaattisia merkintöjä käyttäen, mikä nopeutti koodin kirjoittamista. Osissa 2 ja 3 vaikuttaisi olevan hyödynnetty enemmän matemaattisia merkintöjä, joten niiden ja osan 1 koodaamisen aikana luotujen työkalujen avulla seuraavien sääntöjen kirjoittaminen sujunee nopeammin.
+
+Yritin selvittää hieman, että miten saisin tulevaan testausraporttiin näkyviin badgen yksikkötestien rivikattavuudesta. Ilmeisesti sen saisi Codecovin avulla, mutta OhTun ohjeet on tehty Gradlelle ja tässä on käytössä Maven, enkä enää jaksanut alkaa selvittämään sen käyttöönottoa tarkemmin. Päivä pari taukoa ohjelmoinnista, niin sitten taas jaksaa.

@@ -171,4 +171,24 @@ public class Nonogrammi {
             }
         }
     }
+
+    public void saanto15() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] mustat = rivit[i].saanto15mustienKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+
+            if (mustat != null) {
+                for (int j = 0; j < mustat.length; j++) {
+                    ruudukko.getRuudukko()[mustat[j][0]][mustat[j][1]].setMusta();
+                }
+            }
+
+            int[][] valkoiset = rivit[i].saanto15valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+
+            if (valkoiset != null) {
+                for (int j = 0; j < valkoiset.length; j++) {
+                    ruudukko.getRuudukko()[valkoiset[j][0]][valkoiset[j][1]].setValkoinen();
+                }
+            }
+        }
+    }
 }

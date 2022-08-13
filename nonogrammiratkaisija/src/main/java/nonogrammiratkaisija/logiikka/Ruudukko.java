@@ -3,6 +3,11 @@ package nonogrammiratkaisija.logiikka;
 public class Ruudukko {
     Ruutu[][] ruudukko;
 
+    /**
+     * Luo kaksiulotteisesta Ruutu-taulukosta oman olion.
+     * 
+     * @param ruudukko  Ruudut kaksiulotteisena taulukkona.
+     */
     public Ruudukko(Ruutu[][] ruudukko) {
         this.ruudukko = ruudukko;
     }
@@ -18,6 +23,13 @@ public class Ruudukko {
         return ruudukko[x][y];
     }
 
+    /**
+     * Palauttaa rivillä olevat ruudut taulukkona.
+     * 
+     * @param rivinumero    Rivin järjestysnumero (0...n-1)
+     * @param vaakarivi Vaakarivi 'True', Pystyrivi 'false'
+     * @return  Ruudut taulukkona
+     */
     public Ruutu[] getRivi(int rivinumero, boolean vaakarivi) {
         Ruutu[] rivi = new Ruutu[1];
 

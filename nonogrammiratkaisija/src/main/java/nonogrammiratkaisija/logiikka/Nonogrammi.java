@@ -139,7 +139,7 @@ public class Nonogrammi {
     }
 
     /**
-     * Toteuttaa säännön 1.3
+     * Toteuttaa säännön 1.3.
      */
     public void saanto13() {
         for (int i = 0; i < rivit.length; i++) {
@@ -156,7 +156,7 @@ public class Nonogrammi {
     }
 
     /**
-     * Toteuttaa säännön 1.4
+     * Toteuttaa säännön 1.4.
      */
     public void saanto14() {
         for (int i = 0; i < rivit.length; i++) {
@@ -172,6 +172,9 @@ public class Nonogrammi {
         }
     }
 
+    /**
+     * Toteuttaa säännön 1.5.
+     */
     public void saanto15() {
         for (int i = 0; i < rivit.length; i++) {
             int[][] mustat = rivit[i].saanto15mustienKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));

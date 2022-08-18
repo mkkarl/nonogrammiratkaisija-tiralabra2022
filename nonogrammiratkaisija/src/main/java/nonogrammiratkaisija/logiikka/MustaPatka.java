@@ -159,15 +159,21 @@ public class MustaPatka {
 
     // Sääntö 2.2
 
-    public void saanto22patkanAlku(Ruutu edeltava) {
+    public boolean saanto22patkanAlku(Ruutu edeltava) {
         if (edeltava.getTila() == RuudunTila.MUSTA) {
             this.pieninMahdAlkupiste += 1;
+            return true;
         }
+
+        return false;
     }
 
-    public void saanto22patkanLoppu(Ruutu jalkeinen) {
+    public boolean saanto22patkanLoppu(Ruutu jalkeinen) {
         if (jalkeinen.getTila() == RuudunTila.MUSTA) {
             this.suurinMahdLoppupiste -= 1;
+            return true;
         }
+
+        return false;
     }
 }

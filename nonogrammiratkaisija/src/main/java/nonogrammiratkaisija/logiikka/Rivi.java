@@ -475,13 +475,29 @@ public abstract class Rivi {
             return;
         }
 
+        // intuitio sanoo, että huomioitavia mustia voi olla enemmänkin,
+        // joten while-silmukat lisätty sitä varten
+
         for (int i = 1; i < patkat.length; i++) {
+
             if (patkat[i].getPieninMahdAlkupiste() > 0) {
-                patkat[i].saanto22patkanAlku(ruudukonRivi[patkat[i].getPieninMahdAlkupiste() - 1]);
+                boolean edeltavaOliMusta = true;
+                while (edeltavaOliMusta) {
+                    edeltavaOliMusta = patkat[i]
+                            .saanto22patkanAlku(ruudukonRivi[patkat[i].getPieninMahdAlkupiste() - 1]);
+                }
             }
+        }
+
+        for (int i = 1; i < patkat.length; i++) {
 
             if (patkat[i].getSuurinMahdLoppupiste() < ruudukonRivi.length - 1) {
-                patkat[i].saanto22patkanLoppu(ruudukonRivi[patkat[i].getSuurinMahdLoppupiste() + 1]);
+                boolean jaljessaOliMusta = true;
+                while (jaljessaOliMusta) {
+
+                    jaljessaOliMusta = patkat[i]
+                            .saanto22patkanLoppu(ruudukonRivi[patkat[i].getSuurinMahdLoppupiste() + 1]);
+                }
             }
         }
     }

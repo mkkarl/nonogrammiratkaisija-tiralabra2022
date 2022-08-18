@@ -197,8 +197,6 @@ public class Nonogrammi {
 
     // Osa 2
 
-    // Sääntö 2.1
-
     public void saanto21() {
         for (int i = 0; i < rivit.length; i++) {
             rivit[i].saanto21patkienAlutJaLoput();
@@ -208,6 +206,12 @@ public class Nonogrammi {
     public void saanto22() {
         for (int i = 0; i < rivit.length; i++) {
             rivit[i].saanto22patkienAlutJaLoput(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+        }
+    }
+
+    public void saanto23() {
+        for (int i = 0; i < rivit.length; i++) {
+            rivit[i].saanto23ylipitkatSegmentit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
         }
     }
 }

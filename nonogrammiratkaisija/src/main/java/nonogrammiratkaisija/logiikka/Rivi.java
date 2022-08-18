@@ -502,6 +502,21 @@ public abstract class Rivi {
         }
     }
 
+    // Sääntö 2.3
+
+    public void saanto23ylipitkatSegmentit(Ruutu[] ruudukonRivi) {
+        if (this.patkat == null) {
+            return;
+        }
+
+        int[][] segmentit = segmenttilaskuri(ruudukonRivi);
+
+        for (int i = 0; i < this.patkat.length; i++) {
+            patkat[i].saanto23segmentitAlussa(segmentit);
+            patkat[i].saanto23segmentitLopussa(segmentit);
+        }
+    }
+
     // apumetodeja
 
     private int[][] segmenttilaskuri(Ruutu[] ruudukonRivi) {

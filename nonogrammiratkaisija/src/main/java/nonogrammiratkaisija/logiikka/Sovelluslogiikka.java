@@ -28,5 +28,6 @@ public class Sovelluslogiikka {
         nonogrammi.saanto15();
         nonogrammi.saanto21();
         nonogrammi.saanto22();
+        nonogrammi.saanto23();
     }
 }

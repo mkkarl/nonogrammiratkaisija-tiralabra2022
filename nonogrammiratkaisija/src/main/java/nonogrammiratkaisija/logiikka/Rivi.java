@@ -11,9 +11,9 @@ public abstract class Rivi {
     /**
      * Nonogrammin rivi.
      * 
-     * @param rivinumero Rivinumero, numerointi alkaa nollasta
-     * @param patkat     Rivin mustat pätkät taulukkona
-     * @param onVaakarivi   'true' jos Vaakarivi, 'false' jos Pystyrivi
+     * @param rivinumero  Rivinumero, numerointi alkaa nollasta
+     * @param patkat      Rivin mustat pätkät taulukkona
+     * @param onVaakarivi 'true' jos Vaakarivi, 'false' jos Pystyrivi
      */
     public Rivi(int rivinumero, MustaPatka[] patkat, boolean onVaakarivi) {
         this.rivinumero = rivinumero;
@@ -37,7 +37,7 @@ public abstract class Rivi {
     /**
      * Ilmaisee totuusarvon avulla rivin tyypin.
      * 
-     * @return  Vaakarivi 'true', Pystyrivi 'false'
+     * @return Vaakarivi 'true', Pystyrivi 'false'
      */
     public boolean onVaakarivi() {
         return this.onVaakarivi;
@@ -211,8 +211,8 @@ public abstract class Rivi {
     /**
      * Laskee säännön 1.4 mukaisten valkoisten ruutujen koordinaatit rivillä.
      * 
-     * @param ruudukonrivi  Luokasta 'Ruudukko' haettu rivi
-     * @return  Valkoisten ruutujen koordinaatit {x, y}
+     * @param ruudukonrivi Luokasta 'Ruudukko' haettu rivi
+     * @return Valkoisten ruutujen koordinaatit {x, y}
      */
     public int[][] saanto14valkoistenKoordinaatit(Ruutu[] ruudukonrivi) {
         if (this.patkat == null) {
@@ -284,8 +284,8 @@ public abstract class Rivi {
     /**
      * Laskee säännön 1.5 mukaisten mustien ruutujen koordinaatit rivillä.
      * 
-     * @param ruudukonRivi  Luokasta 'Ruudukko' haettu rivi
-     * @return  Mustien ruutujen koordinaatit {x, y}
+     * @param ruudukonRivi Luokasta 'Ruudukko' haettu rivi
+     * @return Mustien ruutujen koordinaatit {x, y}
      */
     public int[][] saanto15mustienKoordinaatit(Ruutu[] ruudukonRivi) {
         if (this.patkat == null) {
@@ -369,8 +369,8 @@ public abstract class Rivi {
     /**
      * Laskee säännön 1.5 mukaisten valkoisten ruutujen koordinaatit rivillä.
      * 
-     * @param ruudukonRivi  Luokasta 'Ruudukko' haettu rivi
-     * @return  Valkoisten ruutujen koordinaatit {x, y}
+     * @param ruudukonRivi Luokasta 'Ruudukko' haettu rivi
+     * @return Valkoisten ruutujen koordinaatit {x, y}
      */
     public int[][] saanto15valkoistenKoordinaatit(Ruutu[] ruudukonRivi) {
         if (this.patkat == null) {
@@ -460,11 +460,29 @@ public abstract class Rivi {
         }
 
         for (int i = 1; i < patkat.length; i++) {
-                patkat[i].saanto21patkanAlku(patkat[i - 1]);
+            patkat[i].saanto21patkanAlku(patkat[i - 1]);
         }
 
         for (int i = patkat.length - 2; i >= 0; i--) {
             patkat[i].saanto21patkanLoppu(patkat[i + 1]);
+        }
+    }
+
+    // Sääntö 2.2
+
+    public void saanto22patkienAlutJaLoput(Ruutu[] ruudukonRivi) {
+        if (this.patkat == null) {
+            return;
+        }
+
+        for (int i = 1; i < patkat.length; i++) {
+            if (patkat[i].getPieninMahdAlkupiste() > 0) {
+                patkat[i].saanto22patkanAlku(ruudukonRivi[patkat[i].getPieninMahdAlkupiste() - 1]);
+            }
+
+            if (patkat[i].getSuurinMahdLoppupiste() < ruudukonRivi.length - 1) {
+                patkat[i].saanto22patkanLoppu(ruudukonRivi[patkat[i].getSuurinMahdLoppupiste() + 1]);
+            }
         }
     }
 

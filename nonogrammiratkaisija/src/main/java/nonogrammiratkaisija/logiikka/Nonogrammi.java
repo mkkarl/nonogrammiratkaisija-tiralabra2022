@@ -204,4 +204,10 @@ public class Nonogrammi {
             rivit[i].saanto21patkienAlutJaLoput();
         }
     }
+
+    public void saanto22() {
+        for (int i = 0; i < rivit.length; i++) {
+            rivit[i].saanto22patkienAlutJaLoput(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+        }
+    }
 }

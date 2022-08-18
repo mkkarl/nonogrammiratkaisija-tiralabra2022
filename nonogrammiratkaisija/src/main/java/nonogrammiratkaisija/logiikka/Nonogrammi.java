@@ -194,4 +194,14 @@ public class Nonogrammi {
             }
         }
     }
+
+    // Osa 2
+
+    // Sääntö 2.1
+
+    public void saanto21() {
+        for (int i = 0; i < rivit.length; i++) {
+            rivit[i].saanto21patkienAlutJaLoput();
+        }
+    }
 }

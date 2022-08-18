@@ -504,6 +504,53 @@ public abstract class Rivi {
 
     // apumetodeja
 
+    private int[][] segmenttilaskuri(Ruutu[] ruudukonRivi) {
+        int segmenttienLkm = 0;
+        boolean edellinenOliMusta = false;
+
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            if (ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
+                if (!edellinenOliMusta) {
+                    segmenttienLkm++;
+                }
+
+                edellinenOliMusta = true;
+            } else {
+                edellinenOliMusta = false;
+            }
+        }
+
+        if (segmenttienLkm == 0) {
+            return null;
+        }
+
+        int[][] segmentit = new int[segmenttienLkm][2];
+
+        int alku = -1;
+        int j = 0;
+        edellinenOliMusta = false;
+
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            if (ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
+                if (!edellinenOliMusta) {
+                    alku = i;
+                }
+
+                edellinenOliMusta =true;
+            } else {
+                if (alku != -1) {
+                    segmentit[j][0] = alku;
+                    segmentit[j][1] = i - 1;
+                    alku = -1;
+                }
+
+                edellinenOliMusta = false;
+            }
+        }
+
+        return segmentit;
+    }
+
     protected abstract int[][] koordinaattilaskuri(int[][] alutLoputPituudet);
 
     protected abstract int[] ruudunKoordinaatit(int indeksi);

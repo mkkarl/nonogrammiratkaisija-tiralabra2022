@@ -178,4 +178,66 @@ public class MustaPatkaTest {
         patka2.saanto21patkanLoppu(patka3);
         assertEquals(4, patka2.getSuurinMahdLoppupiste());
     }
+
+    // Sääntö 2.2
+
+    @Test
+    public void saanto22edellaMustaRuutuMuuttaa() {
+        Ruutu musta = new Ruutu();
+        musta.setMusta();
+
+        patka1.saanto22patkanAlku(musta);
+
+        assertEquals(4, patka1.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto22edellaValkoinenRuutuEiMuuta() {
+        Ruutu valkoinen = new Ruutu();
+        valkoinen.setValkoinen();
+
+        patka1.saanto22patkanAlku(valkoinen);
+
+        assertEquals(3, patka1.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto22edellaTuntematonRuutuEiMuuta() {
+        Ruutu tuntematon = new Ruutu();
+        tuntematon.setValkoinen();
+
+        patka1.saanto22patkanAlku(tuntematon);
+
+        assertEquals(3, patka1.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto22jaljessaMustaRuutuMuuttaa() {
+        Ruutu musta = new Ruutu();
+        musta.setMusta();
+
+        patka1.saanto22patkanLoppu(musta);
+
+        assertEquals(8, patka1.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto22jaljessaValkoinenRuutuEiMuuta() {
+        Ruutu valkoinen = new Ruutu();
+        valkoinen.setValkoinen();
+
+        patka1.saanto22patkanLoppu(valkoinen);
+
+        assertEquals(9, patka1.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto22jaljessaTuntematonRuutuEiMuuta() {
+        Ruutu tuntematon = new Ruutu();
+        tuntematon.setValkoinen();
+
+        patka1.saanto22patkanLoppu(tuntematon);
+
+        assertEquals(9, patka1.getSuurinMahdLoppupiste());
+    }
 }

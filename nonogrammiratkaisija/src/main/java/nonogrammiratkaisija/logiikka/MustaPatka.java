@@ -156,4 +156,18 @@ public class MustaPatka {
             this.suurinMahdLoppupiste = seuraava.suurinMahdLoppupiste - seuraava.pituus - 1;
         }
     }
+
+    // Sääntö 2.2
+
+    public void saanto22patkanAlku(Ruutu edeltava) {
+        if (edeltava.getTila() == RuudunTila.MUSTA) {
+            this.pieninMahdAlkupiste += 1;
+        }
+    }
+
+    public void saanto22patkanLoppu(Ruutu jalkeinen) {
+        if (jalkeinen.getTila() == RuudunTila.MUSTA) {
+            this.suurinMahdLoppupiste -= 1;
+        }
+    }
 }

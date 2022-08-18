@@ -450,6 +450,24 @@ public abstract class Rivi {
         return koordinaatit;
     }
 
+    // Osa 2
+
+    // Sääntö 2.1
+
+    public void saanto21patkienAlutJaLoput() {
+        if (this.patkat == null) {
+            return;
+        }
+
+        for (int i = 1; i < patkat.length; i++) {
+                patkat[i].saanto21patkanAlku(patkat[i - 1]);
+        }
+
+        for (int i = patkat.length - 2; i >= 0; i--) {
+            patkat[i].saanto21patkanLoppu(patkat[i + 1]);
+        }
+    }
+
     // apumetodeja
 
     protected abstract int[][] koordinaattilaskuri(int[][] alutLoputPituudet);

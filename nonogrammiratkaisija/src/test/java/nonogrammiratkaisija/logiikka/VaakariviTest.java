@@ -89,6 +89,8 @@ public class VaakariviTest {
         assertTrue(tyhjaRivi.onVaakarivi());
     }
 
+    // Osa 1
+
     // Sääntö 1.1
 
     @Test
@@ -240,5 +242,20 @@ public class VaakariviTest {
         int[][] vertausFig11 = {{0, 4}, {0, 7}};
 
         assertArrayEquals(vertausFig11, koordinaatitFig11);
+    }
+
+    // Osa 2
+
+    // Sääntö 2.1
+
+    public void saanto21toimii() {
+        MustaPatka patkaA = new MustaPatka(2, 0, 10);
+        MustaPatka patkaB = new MustaPatka(3, 0, 10);
+        MustaPatka[] patkat = {patkaA, patkaB};
+        Vaakarivi rivi = new Vaakarivi(1, patkat);
+        rivi.saanto21patkienAlutJaLoput();
+
+        assertEquals("Alun muutos", 3, rivi.getPatkat()[1].getPieninMahdAlkupiste());
+        assertEquals("Lopun muutos", 6, rivi.getPatkat()[0].getSuurinMahdLoppupiste());
     }
 }

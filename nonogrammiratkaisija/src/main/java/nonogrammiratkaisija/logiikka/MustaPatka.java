@@ -140,4 +140,20 @@ public class MustaPatka {
 
         return valkoiset;
     }
+
+    // Osa 2
+
+    // Sääntö 2.1
+
+    public void saanto21patkanAlku(MustaPatka edellinen) {
+        if (this.pieninMahdAlkupiste <= edellinen.pieninMahdAlkupiste) {
+            this.pieninMahdAlkupiste = edellinen.pieninMahdAlkupiste + edellinen.pituus + 1;
+        }
+    }
+
+    public void saanto21patkanLoppu(MustaPatka seuraava) {
+        if (this.suurinMahdLoppupiste >= seuraava.suurinMahdLoppupiste) {
+            this.suurinMahdLoppupiste = seuraava.suurinMahdLoppupiste - seuraava.pituus - 1;
+        }
+    }
 }

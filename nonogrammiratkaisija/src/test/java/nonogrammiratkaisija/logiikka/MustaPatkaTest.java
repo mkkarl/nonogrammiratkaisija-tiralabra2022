@@ -142,4 +142,40 @@ public class MustaPatkaTest {
         int[] vertaus3 = {10, 11};
         assertArrayEquals(vertaus3, tulos3);
     }
+
+    // Osa 2
+
+    // Sääntö 2.1
+
+    @Test
+    public void saanto21alkupisteMuuttuuOikein() {
+        MustaPatka patkaA = new MustaPatka(2, 3, 5);
+        MustaPatka patkaB = new MustaPatka(3, 3, 10);
+
+        patkaB.saanto21patkanAlku(patkaA);
+
+        assertEquals(6, patkaB.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto21alkupistePysyySamana() {
+        patka3.saanto21patkanAlku(patka2);
+        assertEquals(2, patka3.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto21loppupisteMuuttuuOikein() {
+        MustaPatka patkaA = new MustaPatka(3, 0, 9);
+        MustaPatka patkaB = new MustaPatka(2, 4, 7);
+
+        patkaA.saanto21patkanLoppu(patkaB);
+
+        assertEquals(4, patkaA.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto21loppupistePysyySamana() {
+        patka2.saanto21patkanLoppu(patka3);
+        assertEquals(4, patka2.getSuurinMahdLoppupiste());
+    }
 }

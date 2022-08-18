@@ -176,4 +176,34 @@ public class MustaPatka {
 
         return false;
     }
+
+    // Sääntö 2.3
+
+    public void saanto23segmentitAlussa(int[][] segmentit) {
+        for (int i = 0; i < segmentit.length; i++) {
+            if (segmentit[i][0] >= this.pieninMahdAlkupiste && segmentit[i][1] <= this.suurinMahdLoppupiste) {
+                if (segmentit[i][1] - segmentit[i][0] + 1 > this.pituus) {
+                    this.pieninMahdAlkupiste = segmentit[i][1] + 2;
+                } else {
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+    }
+
+    public void saanto23segmentitLopussa(int[][] segmentit) {
+        for (int i = segmentit.length - 1; i >= 0; i--) {
+            if (segmentit[i][1] <= this. suurinMahdLoppupiste && segmentit[i][0] >= this.pieninMahdAlkupiste) {
+                if (segmentit[i][1] - segmentit[i][0] + 1 > this.pituus) {
+                    this.suurinMahdLoppupiste = segmentit[i][0] - 2;
+                } else {
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+    }
 }

@@ -240,4 +240,65 @@ public class MustaPatkaTest {
 
         assertEquals(9, patka1.getSuurinMahdLoppupiste());
     }
+
+    // Sääntö 2.3
+
+    @Test
+    public void saanto23liianPitkaMustaMuuttaaAlkua() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{4, 6}, {11, 11}};
+
+        patka.saanto23segmentitAlussa(segmentit);
+
+        assertEquals(8, patka.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto23yhtaPitkaAlussaEiMuuta() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{4, 4}, {11, 11}};
+
+        patka.saanto23segmentitAlussa(segmentit);
+
+        assertEquals(4, patka.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto23kaikkiLapiAlustaLoppuunIlmanMuutoksia() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{1,1}, {4, 4}, {11, 11}, {13, 13}};
+
+        patka.saanto23segmentitAlussa(segmentit);
+
+        assertEquals(4, patka.getPieninMahdAlkupiste());
+    }
+
+    @Test
+    public void saanto23liianPitkaMustaMuuttaaLoppua() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{4, 4}, {9, 11}};
+
+        patka.saanto23segmentitLopussa(segmentit);
+
+        assertEquals(7, patka.getSuurinMahdLoppupiste());
+    }
+
+    public void saanto23yhtaPitkaLopussaEiMuuta() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{4, 6}, {11, 11}};
+
+        patka.saanto23segmentitLopussa(segmentit);
+
+        assertEquals(11, patka.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto23kaikkiLapiLopustaAlkuunIlmanMuutoksia() {
+        MustaPatka patka = new MustaPatka(1, 4, 11);
+        int[][] segmentit = {{1,1}, {4, 4}, {11, 11}, {13, 13}};
+
+        patka.saanto23segmentitLopussa(segmentit);
+
+        assertEquals(11, patka.getSuurinMahdLoppupiste());
+    }
 }

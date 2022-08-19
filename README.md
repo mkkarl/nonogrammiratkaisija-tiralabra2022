@@ -20,6 +20,8 @@ Nonogrammi eli japanilainen ristikko on ristikko, jossa ruudukon ruutuja värite
 
 [Viikkoraportti 4](https://github.com/mkkarl/nonogrammiratkaisija-tiralabra2022/blob/main/nonogrammiratkaisija/Dokumentaatio/Viikkoraportti4.md)
 
+[Viikkoraportti 5](https://github.com/mkkarl/nonogrammiratkaisija-tiralabra2022/blob/main/nonogrammiratkaisija/Dokumentaatio/Viikkoraportti5.md)
+
 ## Käyttöohjeita
 
 ### JavaDoc

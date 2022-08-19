@@ -211,7 +211,7 @@ public class MustaPatka {
 
     // Sääntö 3.1
 
-    public int[] saanto31mustienTaytto(MustaPatka edellinen, MustaPatka seuraava, Ruutu[] ruudunRivi) {
+    public int[] saanto31mustienTaytto(MustaPatka edellinen, MustaPatka seuraava, Ruutu[] ruudukonRivi) {
         int alku = -1;
 
         if (edellinen == null) {
@@ -223,7 +223,7 @@ public class MustaPatka {
         int m = -1;
 
         for (int i = alku; i <= this.suurinMahdLoppupiste; i++) {
-            if (ruudunRivi[i].getTila() == RuudunTila.MUSTA) {
+            if (ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
                 m = i;
                 break;
             }
@@ -244,7 +244,7 @@ public class MustaPatka {
         int n = -1;
 
         for (int i = loppu; i >= m; i--) {
-            if (ruudunRivi[i].getTila() == RuudunTila.MUSTA) {
+            if (ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
                 n = i;
                 break;
             }

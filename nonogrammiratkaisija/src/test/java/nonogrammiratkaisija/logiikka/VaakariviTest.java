@@ -248,6 +248,7 @@ public class VaakariviTest {
 
     // Sääntö 2.1
 
+    @Test
     public void saanto21toimii() {
         MustaPatka patkaA = new MustaPatka(2, 0, 10);
         MustaPatka patkaB = new MustaPatka(3, 0, 10);
@@ -257,5 +258,32 @@ public class VaakariviTest {
 
         assertEquals("Alun muutos", 3, rivi.getPatkat()[1].getPieninMahdAlkupiste());
         assertEquals("Lopun muutos", 6, rivi.getPatkat()[0].getSuurinMahdLoppupiste());
+    }
+
+    // Osa 3
+
+    // Sääntö 3.1
+
+    @Test
+    public void saanto31fig13() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 3);
+        MustaPatka patkaB = new MustaPatka(4, 2, 8);
+        MustaPatka patkaC = new MustaPatka(3, 7, 12);
+        MustaPatka[] patkat = {patkaA, patkaB, patkaC};
+        Vaakarivi rivi = new Vaakarivi(2, patkat);
+
+        Ruutu[] ruudukonRivi = new Ruutu[13];
+
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+
+        ruudukonRivi[4].setMusta();
+        ruudukonRivi[6].setMusta();
+
+        int[][] tulos = rivi.saanto31pituuksienKorjausJaMustat(ruudukonRivi);
+        int[][] vertaus = {{-1, -1}, {4, 6}, {-1, -1}};
+
+        assertArrayEquals(vertaus, tulos);
     }
 }

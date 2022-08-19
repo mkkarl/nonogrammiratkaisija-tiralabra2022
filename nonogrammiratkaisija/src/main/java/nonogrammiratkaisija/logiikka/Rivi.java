@@ -517,6 +517,43 @@ public abstract class Rivi {
         }
     }
 
+    // Osa 3
+
+    // Sääntö 3.1
+
+    public int[][] saanto31pituuksienKorjausJaMustat(Ruutu[] ruudukonRivi) {
+        if (this.patkat == null) {
+            return null;
+        }
+
+        int[][] koordinaatit = new int[patkat.length][2];
+
+        for (int j = 0; j < patkat.length; j++) {
+            MustaPatka edellinen = null;
+            MustaPatka seuraava = null;
+
+            if (j > 0) {
+                edellinen = patkat[j - 1];
+            }
+
+            if (j < patkat.length - 1) {
+                seuraava = patkat[j + 1];
+            }
+
+            int[] alkuLoppu = patkat[j].saanto31mustienTaytto(edellinen, seuraava, ruudukonRivi);
+
+            if (alkuLoppu != null) {
+                koordinaatit[j][0] = alkuLoppu[0];
+                koordinaatit[j][1] = alkuLoppu[1];
+            } else {
+                koordinaatit[j][0] = -1;
+                koordinaatit[j][1] = -1;
+            }
+        }
+
+        return koordinaatit;
+    }
+
     // apumetodeja
 
     private int[][] segmenttilaskuri(Ruutu[] ruudukonRivi) {
@@ -551,7 +588,7 @@ public abstract class Rivi {
                     alku = i;
                 }
 
-                edellinenOliMusta =true;
+                edellinenOliMusta = true;
             } else {
                 if (alku != -1) {
                     segmentit[j][0] = alku;

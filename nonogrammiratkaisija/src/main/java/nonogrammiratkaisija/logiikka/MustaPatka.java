@@ -206,4 +206,61 @@ public class MustaPatka {
             }
         }
     }
+
+    // Osa 3
+
+    // Sääntö 3.1
+
+    public int[] saanto31mustienTaytto(MustaPatka edellinen, MustaPatka seuraava, Ruutu[] ruudunRivi) {
+        int alku = -1;
+
+        if (edellinen == null) {
+            alku = this.pieninMahdAlkupiste;
+        } else {
+            alku = edellinen.suurinMahdLoppupiste + 1;
+        }
+
+        int m = -1;
+
+        for (int i = alku; i <= this.suurinMahdLoppupiste; i++) {
+            if (ruudunRivi[i].getTila() == RuudunTila.MUSTA) {
+                m = i;
+                break;
+            }
+        }
+
+        if (m == -1) {
+            return null;
+        }
+
+        int loppu = -1;
+
+        if (seuraava == null) {
+            loppu = this.suurinMahdLoppupiste;
+        } else {
+            loppu = seuraava.pieninMahdAlkupiste + 1;
+        }
+
+        int n = -1;
+
+        for (int i = loppu; i >= m; i--) {
+            if (ruudunRivi[i].getTila() == RuudunTila.MUSTA) {
+                n = i;
+                break;
+            }
+        }
+
+        if (n == -1) {
+            return null;
+        }
+
+        int u = this.pituus - (n - m + 1);
+
+        this.pieninMahdAlkupiste = m - u;
+        this.suurinMahdLoppupiste = n + u;
+
+        int[] alkuLoppu = {m, n};
+
+        return alkuLoppu;
+    }
 }

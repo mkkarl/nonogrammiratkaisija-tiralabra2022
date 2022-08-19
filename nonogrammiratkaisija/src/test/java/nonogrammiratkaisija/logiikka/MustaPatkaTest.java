@@ -301,4 +301,33 @@ public class MustaPatkaTest {
 
         assertEquals(11, patka.getSuurinMahdLoppupiste());
     }
+
+    // Osa 3
+
+    // Sääntö 3.1
+
+    @Test
+    public void saanto31fig13toimii() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 3);
+        MustaPatka patkaB = new MustaPatka(4, 2, 8);
+        MustaPatka patkaC = new MustaPatka(3, 7, 12);
+        Ruutu[] rivi = new Ruutu[13];
+
+        for (int i = 0; i < rivi.length; i++) {
+            rivi[i] = new Ruutu();
+        }
+
+        rivi[4].setMusta();
+        rivi[6].setMusta();
+
+        int[] tulosA = patkaA.saanto31mustienTaytto(null, patkaB, rivi);
+        int[] tulosB = patkaB.saanto31mustienTaytto(patkaA, patkaC, rivi);
+        int[] tulosC = patkaC.saanto31mustienTaytto(patkaB, null, rivi);
+
+        int[] vertausB = {4, 6};
+
+        assertNull("PatkaA", tulosA);
+        assertArrayEquals("PatkaB", vertausB, tulosB);
+        assertNull("PatkaC", tulosC);
+    }
 }

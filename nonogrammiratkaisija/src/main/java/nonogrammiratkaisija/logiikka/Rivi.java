@@ -526,7 +526,7 @@ public abstract class Rivi {
             return null;
         }
 
-        int[][] koordinaatit = new int[patkat.length][2];
+        int[][] valit = new int[this.patkat.length][3];
 
         for (int j = 0; j < patkat.length; j++) {
             MustaPatka edellinen = null;
@@ -542,14 +542,18 @@ public abstract class Rivi {
 
             int[] alkuLoppu = patkat[j].saanto31mustienTaytto(edellinen, seuraava, ruudukonRivi);
 
-            if (alkuLoppu != null) {
-                koordinaatit[j][0] = alkuLoppu[0];
-                koordinaatit[j][1] = alkuLoppu[1];
+            if (alkuLoppu == null) {
+                valit[j][0] = -1;
+                valit[j][1] = -1;
+                valit[j][2] = 0;
             } else {
-                koordinaatit[j][0] = -1;
-                koordinaatit[j][1] = -1;
+                valit[j][0] = alkuLoppu[0];
+                valit[j][1] = alkuLoppu[1];
+                valit[j][2] = alkuLoppu[1] - alkuLoppu[0] + 1;
             }
         }
+
+        int[][] koordinaatit = this.koordinaattilaskuri(valit);
 
         return koordinaatit;
     }

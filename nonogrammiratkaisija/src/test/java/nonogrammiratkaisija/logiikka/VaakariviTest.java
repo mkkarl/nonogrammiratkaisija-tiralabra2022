@@ -282,7 +282,7 @@ public class VaakariviTest {
         ruudukonRivi[6].setMusta();
 
         int[][] tulos = rivi.saanto31pituuksienKorjausJaMustat(ruudukonRivi);
-        int[][] vertaus = {{-1, -1}, {4, 6}, {-1, -1}};
+        int[][] vertaus = {{2, 4}, {2, 5}, {2, 6}};
 
         assertArrayEquals(vertaus, tulos);
     }

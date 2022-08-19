@@ -7,11 +7,13 @@ public class Nonogrammi {
     /**
      * Nonogrammi, joka koostuu riveistä ja ruuduista.
      * 
-     * @param vaakarivit    Nonogrammin vaakarivien numerot vasemmalta oikealle ja ylhäältä alas taulukkona
-     * @param pystyrivit    Nonogrammin pystyrivien numerot ylhäältä alas ja vasemmalta oikealle taulukkona
+     * @param vaakarivit Nonogrammin vaakarivien numerot vasemmalta oikealle ja
+     *                   ylhäältä alas taulukkona
+     * @param pystyrivit Nonogrammin pystyrivien numerot ylhäältä alas ja vasemmalta
+     *                   oikealle taulukkona
      */
     public Nonogrammi(String[] vaakarivit, String[] pystyrivit) {
-        Ruutu [][] apuruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
+        Ruutu[][] apuruudukko = new Ruutu[vaakarivit.length][pystyrivit.length];
 
         for (int i = 0; i < apuruudukko.length; i++) {
             for (int j = 0; j < apuruudukko[0].length; j++) {
@@ -47,7 +49,7 @@ public class Nonogrammi {
             patkat = new MustaPatka[palat.length];
             int k = palat.length;
             int[] lb = new int[palat.length];
-            
+
             for (int i = 0; i < palat.length; i++) {
                 lb[i] = Integer.valueOf(palat[i]);
             }
@@ -77,8 +79,6 @@ public class Nonogrammi {
 
             }
         }
-
-        
 
         return patkat;
     }
@@ -160,7 +160,8 @@ public class Nonogrammi {
      */
     public void saanto14() {
         for (int i = 0; i < rivit.length; i++) {
-            int[][] koordinaatit = rivit[i].saanto14valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+            int[][] koordinaatit = rivit[i]
+                    .saanto14valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
 
             if (koordinaatit == null) {
                 continue;
@@ -177,7 +178,8 @@ public class Nonogrammi {
      */
     public void saanto15() {
         for (int i = 0; i < rivit.length; i++) {
-            int[][] mustat = rivit[i].saanto15mustienKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+            int[][] mustat = rivit[i]
+                    .saanto15mustienKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
 
             if (mustat != null) {
                 for (int j = 0; j < mustat.length; j++) {
@@ -185,7 +187,8 @@ public class Nonogrammi {
                 }
             }
 
-            int[][] valkoiset = rivit[i].saanto15valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+            int[][] valkoiset = rivit[i]
+                    .saanto15valkoistenKoordinaatit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
 
             if (valkoiset != null) {
                 for (int j = 0; j < valkoiset.length; j++) {
@@ -212,6 +215,23 @@ public class Nonogrammi {
     public void saanto23() {
         for (int i = 0; i < rivit.length; i++) {
             rivit[i].saanto23ylipitkatSegmentit(ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+        }
+    }
+
+    // Osa 3
+
+    public void saanto31() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] mustat = rivit[i].saanto31pituuksienKorjausJaMustat(
+                    ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+
+            if (mustat != null) {
+                for (int j = 0; j < mustat.length; j++) {
+                    if (mustat[j][0] != -1) {
+                        ruudukko.getRuudukko()[mustat[j][0]][mustat[j][1]].setMusta();
+                    }
+                }
+            }
         }
     }
 }

@@ -603,6 +603,52 @@ public abstract class Rivi {
         return koordinaatit;
     }
 
+    // Sääntö 3.3
+
+    public Ruutu[] saanto33(Ruutu[] ruudukonRivi) {
+        if (this.patkat == null) {
+            return null;
+        }
+
+        for (int j = 0; j < this.patkat.length; j++) {
+            if (j == 0 || this.patkat[j].getPieninMahdAlkupiste() > this.patkat[j - 1].getSuurinMahdLoppupiste()) {
+
+                MustaPatka edellinen = null;
+                MustaPatka seuraava = null;
+
+                if (j > 0) {
+                    edellinen = patkat[j - 1];
+                }
+
+                if (j < patkat.length - 1) {
+                    seuraava = patkat[j + 1];
+                }
+
+                if (ruudukonRivi[this.patkat[j].getPieninMahdAlkupiste()].getTila() == RuudunTila.MUSTA) {
+                    ruudukonRivi = this.patkat[j].saanto331vasenPaa(ruudukonRivi, edellinen, seuraava);
+                }
+            } else if (j == this.patkat.length - 1 || this.patkat[j].getSuurinMahdLoppupiste() < this.patkat[j + 1].getPieninMahdAlkupiste()) {
+                MustaPatka edellinen = null;
+                MustaPatka seuraava = null;
+
+                if (j > 0) {
+                    edellinen = patkat[j - 1];
+                }
+
+                if (j < patkat.length - 1) {
+                    seuraava = patkat[j + 1];
+                }
+
+                if (ruudukonRivi[this.patkat[j].getPieninMahdAlkupiste()].getTila() == RuudunTila.MUSTA) {
+                    ruudukonRivi = this.patkat[j].saanto331oikeaPaa(ruudukonRivi, edellinen, seuraava);
+                }
+            }
+
+        }
+
+        return ruudukonRivi;
+    }
+
     // apumetodeja
 
     private int[][] segmenttilaskuri(Ruutu[] ruudukonRivi) {

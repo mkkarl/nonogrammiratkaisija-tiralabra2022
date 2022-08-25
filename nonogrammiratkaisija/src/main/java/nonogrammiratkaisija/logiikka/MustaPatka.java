@@ -357,7 +357,7 @@ public class MustaPatka {
     // Sääntö 3.3-1
 
     /**
-     * Toteuttaa säännön 3.3-1 mustalle pätkälle.
+     * Toteuttaa säännön 3.3-1 mustalle pätkälle oikeaan päähän.
      * Tee vain pätkälle, jonka edellä ei ole pätkää tai edeltävä pätkä ei ole päälekkäinen,
      * ja jonka pienin mahdollinen alkupiste on musta.
      */
@@ -386,6 +386,36 @@ public class MustaPatka {
 
         if (edellinen != null && edellinen.suurinMahdLoppupiste == this.pieninMahdAlkupiste - 1) {
             edellinen.suurinMahdLoppupiste = this.pieninMahdAlkupiste - 2;
+        }
+
+        return ruudukonRivi;
+    }
+
+    public Ruutu[] saanto331oikeaPaa (Ruutu[] ruudukonRivi, MustaPatka edellinen, MustaPatka seuraava) {
+
+        //kohta 1
+
+        for (int i = this.suurinMahdLoppupiste; i >= this.suurinMahdLoppupiste - this.pituus + 1; i--) {
+            ruudukonRivi[i].setMusta();
+        }
+
+        ruudukonRivi[this.suurinMahdLoppupiste + 1].setValkoinen();
+        ruudukonRivi[this.suurinMahdLoppupiste - this.pituus].setValkoinen();
+
+        // kohta 2
+
+        this.pieninMahdAlkupiste = this.suurinMahdLoppupiste - this.pituus + 1;
+
+        // kohta 3
+
+        if (edellinen != null && this.pieninMahdAlkupiste <= edellinen.suurinMahdLoppupiste) {
+            edellinen.suurinMahdLoppupiste = this.pieninMahdAlkupiste - 2;
+        }
+
+        // kohta 4
+
+        if (seuraava != null && seuraava.pieninMahdAlkupiste == this.suurinMahdLoppupiste + 1) {
+            seuraava.pieninMahdAlkupiste = this.suurinMahdLoppupiste + 2;
         }
 
         return ruudukonRivi;

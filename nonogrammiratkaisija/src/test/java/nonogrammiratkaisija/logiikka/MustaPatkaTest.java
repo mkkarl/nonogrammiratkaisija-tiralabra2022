@@ -397,4 +397,37 @@ public class MustaPatkaTest {
         assertEquals(10, patkaC.getPieninMahdAlkupiste());
         assertEquals(11, patkaC.getSuurinMahdLoppupiste());
     }
+
+    @Test
+    public void saanto331fig15rev() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 4);
+        MustaPatka patkaB = new MustaPatka(4, 1, 6);
+        MustaPatka patkaC = new MustaPatka(1, 7, 11);
+        Ruutu[] ruudukonRivi = new Ruutu[12];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[6].setMusta();
+
+        Ruutu[] tulos = patkaB.saanto331oikeaPaa(ruudukonRivi, patkaA, patkaC);
+        Ruutu[] vertaus = new Ruutu[12];
+        for (int i = 0; i < vertaus.length; i++) {
+            vertaus[i] = new Ruutu();
+        }
+        vertaus[2].setValkoinen();
+        vertaus[3].setMusta();
+        vertaus[4].setMusta();
+        vertaus[5].setMusta();
+        vertaus[6].setMusta();
+        vertaus[7].setValkoinen();
+
+        assertArrayEquals(vertaus, tulos);
+
+        assertEquals(0, patkaA.getPieninMahdAlkupiste());
+        assertEquals(1, patkaA.getSuurinMahdLoppupiste());
+        assertEquals(3, patkaB.getPieninMahdAlkupiste());
+        assertEquals(6, patkaB.getSuurinMahdLoppupiste());
+        assertEquals(8, patkaC.getPieninMahdAlkupiste());
+        assertEquals(11, patkaC.getSuurinMahdLoppupiste());
+    }
 }

@@ -127,7 +127,7 @@ public class Kayttoliittyma {
                 System.out.print(patkat[0].toString());
 
                 for (int j = 1; j < patkat.length; j++) {
-                    System.out.print(", " + patkat[j].toString());
+                    System.out.print(" | " + patkat[j].toString());
                 }
 
                 System.out.println();

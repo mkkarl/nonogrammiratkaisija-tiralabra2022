@@ -48,4 +48,23 @@ public class Ruutu implements Comparable<Ruutu> {
             return -1;
         }
     }
+
+    @Override
+    public boolean equals(Object verrattava) {
+        if (this == verrattava) {
+            return true;
+        }
+
+        if (!(verrattava instanceof Ruutu)) {
+            return false;
+        }
+
+        Ruutu verrattavaRuutu = (Ruutu) verrattava;
+
+        if (this.tila == verrattavaRuutu.tila) {
+            return true;
+        }
+
+        return false;
+    }
 }

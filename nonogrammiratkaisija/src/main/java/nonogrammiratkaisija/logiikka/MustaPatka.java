@@ -30,6 +30,11 @@ public class MustaPatka {
         return this.suurinMahdLoppupiste;
     }
 
+    @Override
+    public String toString() {
+        return "p: " + this.pituus + ", a: " + this.pieninMahdAlkupiste + ", l: " + this.suurinMahdLoppupiste;
+    }
+
     // SÄÄNNÖT
 
     // Osa 1

@@ -63,6 +63,14 @@ public class MustaPatkaTest {
         assertEquals(9, loppupiste);
     }
 
+    @Test
+    public void toStringToimiiOikein() {
+        String tulos = patka1.toString();
+        String vertaus = "p: 2, a: 3, l: 9";
+
+        assertEquals(vertaus, tulos);
+    }
+
     // Sääntö 1.1
 
     @Test

@@ -99,7 +99,7 @@ public class MustaPatka {
     /**
      * Laskee rivin alussa olevat valkoiset ruudut.
      * 
-     * @return  {alkupiste, loppupiste}
+     * @return {alkupiste, loppupiste}
      */
     public int[] valkoisetRivinAlussa() {
         int[] valkoiset = { -1, -1 };
@@ -115,8 +115,8 @@ public class MustaPatka {
     /**
      * Laskee mustan pätkän ja seuraavan pätkän väliin jäävät valkoiset ruudut.
      * 
-     * @param seuraava  Seuraava musta pätkä (i+1)
-     * @return  {alkupiste, loppupiste}
+     * @param seuraava Seuraava musta pätkä (i+1)
+     * @return {alkupiste, loppupiste}
      */
     public int[] valkoisetPatkienValissa(MustaPatka seuraava) {
         int[] valkoiset = { -1, -1 };
@@ -132,8 +132,8 @@ public class MustaPatka {
     /**
      * Laskee rivin lopussa olevat valkoiset ruudut.
      * 
-     * @param rivinPituus   Rivin pituus
-     * @return  {alkupiste, loppupiste}
+     * @param rivinPituus Rivin pituus
+     * @return {alkupiste, loppupiste}
      */
     public int[] valkoisetRivinLopussa(int rivinPituus) {
         int[] valkoiset = { -1, -1 };
@@ -200,7 +200,7 @@ public class MustaPatka {
 
     public void saanto23segmentitLopussa(int[][] segmentit) {
         for (int i = segmentit.length - 1; i >= 0; i--) {
-            if (segmentit[i][1] <= this. suurinMahdLoppupiste && segmentit[i][0] >= this.pieninMahdAlkupiste) {
+            if (segmentit[i][1] <= this.suurinMahdLoppupiste && segmentit[i][0] >= this.pieninMahdAlkupiste) {
                 if (segmentit[i][1] - segmentit[i][0] + 1 > this.pituus) {
                     this.suurinMahdLoppupiste = segmentit[i][0] - 2;
                 } else {
@@ -243,7 +243,7 @@ public class MustaPatka {
         if (seuraava == null) {
             loppu = this.suurinMahdLoppupiste;
         } else {
-            loppu = seuraava.pieninMahdAlkupiste + 1;
+            loppu = seuraava.pieninMahdAlkupiste - 1;
         }
 
         int n = -1;
@@ -261,11 +261,15 @@ public class MustaPatka {
 
         int u = this.pituus - (n - m + 1);
 
-        this.pieninMahdAlkupiste = m - u;
-        this.suurinMahdLoppupiste = n + u;
+        if (m - u <= n + u) {
+            this.pieninMahdAlkupiste = m - u;
+            this.suurinMahdLoppupiste = n + u;
 
-        int[] alkuLoppu = {m, n};
+            int[] alkuLoppu = { m, n };
 
-        return alkuLoppu;
+            return alkuLoppu;
+        }
+
+        return null;
     }
 }

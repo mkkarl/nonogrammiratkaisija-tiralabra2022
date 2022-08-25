@@ -2,6 +2,9 @@ package nonogrammiratkaisija.ui;
 
 import java.util.Scanner;
 
+import nonogrammiratkaisija.logiikka.MustaPatka;
+import nonogrammiratkaisija.logiikka.Nonogrammi;
+import nonogrammiratkaisija.logiikka.Rivi;
 import nonogrammiratkaisija.logiikka.Ruutu;
 import nonogrammiratkaisija.logiikka.Sovelluslogiikka;
 
@@ -34,6 +37,7 @@ public class Kayttoliittyma {
                 kasiSyotto();
                 sovelluslogiikka.ratkaiseNonogrammi();
                 tulostaNonogrammi();
+                tulostaPatkat();
             } else if (komento.toUpperCase().equals("T")) {
                 // tähän tulee tiedoston syöttö
                 System.out.println("Tiedoston syöttö on tuleva ominaisuus\n");
@@ -106,6 +110,32 @@ public class Kayttoliittyma {
         }
 
         System.out.println(ylaAlaReuna + "\n");
+    }
+
+    private void tulostaPatkat() {
+        Rivi[] rivit = this.sovelluslogiikka.getNonogrammi().getRivit();
+
+        for (int i = 0; i < rivit.length; i++) {
+            if (rivit[i].onVaakarivi()) {
+                System.out.println("Vaakarivi " + rivit[i].getRivinumero());
+            } else {
+                System.out.println("Pystyrivi " + rivit[i].getRivinumero());
+            }
+
+            MustaPatka[] patkat = rivit[i].getPatkat();
+
+            if (patkat != null) {
+                System.out.print(patkat[0].toString());
+
+                for (int j = 1; j < patkat.length; i++) {
+                    System.out.print(", " + patkat[j].toString());
+                }
+
+                System.out.println();
+            }
+        }
+
+        System.out.println();
     }
 
     

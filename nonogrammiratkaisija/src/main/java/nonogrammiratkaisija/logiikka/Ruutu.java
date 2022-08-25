@@ -1,6 +1,6 @@
 package nonogrammiratkaisija.logiikka;
 
-public class Ruutu {
+public class Ruutu implements Comparable<Ruutu> {
     private RuudunTila tila;
 
     /**
@@ -38,5 +38,14 @@ public class Ruutu {
 
     public RuudunTila getTila() {
         return this.tila;
+    }
+
+    @Override
+    public int compareTo(Ruutu ruutu) {
+        if (this.tila == ruutu.tila) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 }

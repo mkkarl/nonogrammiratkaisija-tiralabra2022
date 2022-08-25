@@ -3,7 +3,6 @@ package nonogrammiratkaisija.ui;
 import java.util.Scanner;
 
 import nonogrammiratkaisija.logiikka.MustaPatka;
-import nonogrammiratkaisija.logiikka.Nonogrammi;
 import nonogrammiratkaisija.logiikka.Rivi;
 import nonogrammiratkaisija.logiikka.Ruutu;
 import nonogrammiratkaisija.logiikka.Sovelluslogiikka;
@@ -127,7 +126,7 @@ public class Kayttoliittyma {
             if (patkat != null) {
                 System.out.print(patkat[0].toString());
 
-                for (int j = 1; j < patkat.length; i++) {
+                for (int j = 1; j < patkat.length; j++) {
                     System.out.print(", " + patkat[j].toString());
                 }
 

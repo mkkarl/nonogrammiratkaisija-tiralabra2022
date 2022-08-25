@@ -286,4 +286,33 @@ public class VaakariviTest {
 
         assertArrayEquals(vertaus, tulos);
     }
+
+    // Sääntö 3.2
+
+    @Test
+    public void saanto32fig14() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 8);
+        MustaPatka patkaB = new MustaPatka(3, 1, 16);
+        MustaPatka patkaC = new MustaPatka(1, 12, 17);
+        MustaPatka[] patkat = {patkaA, patkaB, patkaC};
+        Ruutu[] ruudukonRivi = new Ruutu[18];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[2].setValkoinen();
+        ruudukonRivi[4].setValkoinen();
+        ruudukonRivi[5].setValkoinen();
+        ruudukonRivi[8].setMusta();
+        ruudukonRivi[9].setValkoinen();
+        ruudukonRivi[11].setValkoinen();
+        ruudukonRivi[13].setMusta();
+        ruudukonRivi[15].setValkoinen();
+
+        Vaakarivi rivi = new Vaakarivi(2, patkat);
+
+        int[][] tulos = rivi.saanto32lyhyetSegmentitJaValkoisetKeskella(ruudukonRivi);
+        int[][] vertaus = {{2, 10}};
+
+        assertArrayEquals(vertaus, tulos);
+    }
 }

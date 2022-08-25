@@ -558,6 +558,51 @@ public abstract class Rivi {
         return koordinaatit;
     }
 
+    // Sääntö 3.2
+
+    public int[][] saanto32lyhyetSegmentitJaValkoisetKeskella(Ruutu[] ruudukonRivi) {
+        if (this.patkat == null) {
+            return null;
+        }
+
+        ArrayList<int[][]> alutLoput = new ArrayList<>();
+        int rivimaara = 0;
+
+        for (int j = 0; j < this.patkat.length; j++) {
+            MustaPatka edellinen = null;
+            if (j > 0) {
+                edellinen = this.patkat[j - 1];
+            }
+
+            MustaPatka seuraava = null;
+            if (j < this.patkat.length - 1) {
+                seuraava = this.patkat[j + 1];
+            }
+
+            int[][] taulukko = this.patkat[j].saanto32liianLyhyetValit(ruudukonRivi, edellinen, seuraava);
+            if (taulukko != null) {
+                alutLoput.add(taulukko);
+                rivimaara += taulukko.length;
+            }
+        }
+
+        int[][] alutLoputPituudet = new int[rivimaara][3];
+        int k = 0;
+
+        for (int i = 0; i < alutLoput.size(); i++) {
+            for (int j = 0; j < alutLoput.get(i).length; j++) {
+                alutLoputPituudet[k][0] = alutLoput.get(i)[j][0];
+                alutLoputPituudet[k][1] = alutLoput.get(i)[j][1];
+                alutLoputPituudet[k][2] = alutLoput.get(i)[j][2];
+                k++;
+            }
+        }
+
+        int[][] koordinaatit = koordinaattilaskuri(alutLoputPituudet);
+
+        return koordinaatit;
+    }
+
     // apumetodeja
 
     private int[][] segmenttilaskuri(Ruutu[] ruudukonRivi) {

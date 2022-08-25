@@ -338,4 +338,30 @@ public class MustaPatkaTest {
         assertArrayEquals("PatkaB", vertausB, tulosB);
         assertNull("PatkaC", tulosC);
     }
+
+    @Test
+    public void saanto32fig14() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 8);
+        MustaPatka patkaB = new MustaPatka(3, 1, 16);
+        MustaPatka patkaC = new MustaPatka(1, 12, 17);
+        Ruutu[] ruudukonRivi = new Ruutu[18];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[2].setValkoinen();
+        ruudukonRivi[4].setValkoinen();
+        ruudukonRivi[5].setValkoinen();
+        ruudukonRivi[8].setMusta();
+        ruudukonRivi[9].setValkoinen();
+        ruudukonRivi[11].setValkoinen();
+        ruudukonRivi[13].setMusta();
+        ruudukonRivi[15].setValkoinen();
+
+        int[][] tulos = patkaB.saanto32liianLyhyetValit(ruudukonRivi, patkaA, patkaC);
+        int[][] vertaus = {{10, 10, 1}};
+
+        assertArrayEquals("Ei palauta taulukkoa oikein", vertaus, tulos);
+        assertEquals("Pienin mahdollinen alkupiste", 6, patkaB.getPieninMahdAlkupiste());
+        assertEquals("Suurin mahdollinen loppupiste", 14, patkaB.getSuurinMahdLoppupiste());
+    }
 }

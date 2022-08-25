@@ -1,5 +1,7 @@
 package nonogrammiratkaisija.logiikka;
 
+import java.util.ArrayList;
+
 public class MustaPatka {
     private int pituus;
     private int pieninMahdAlkupiste;
@@ -268,6 +270,85 @@ public class MustaPatka {
             int[] alkuLoppu = { m, n };
 
             return alkuLoppu;
+        }
+
+        return null;
+    }
+
+    public int[][] saanto32liianLyhyetValit(Ruutu[] ruudukonRivi, MustaPatka edellinen, MustaPatka seuraava) {
+        if (this.suurinMahdLoppupiste - this.pieninMahdAlkupiste + 1 == this.pituus || this.pituus == 1) {
+            return null;
+        }
+
+        // määritetään valkoisten väliin jäävät segmentit (voivat olla mustia tai tuntemattomia)
+        int[][] segmentit = new int[(this.suurinMahdLoppupiste - this.pieninMahdAlkupiste + 1) / 2][2];
+        int segAlku = this.pieninMahdAlkupiste;
+        int k = 0;
+        
+        for (int i = this.pieninMahdAlkupiste; i <= this.suurinMahdLoppupiste; i++) {
+            if (ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
+                if (segAlku != -1 && i != this.pieninMahdAlkupiste) {
+                    segmentit[k][0] = segAlku;
+                    segmentit[k][1] = i - 1;
+                    k++;
+                }
+
+                segAlku = -1;
+            } else if (segAlku == -1) {
+                segAlku = i;
+            }
+        }
+        
+        // nyt k = b - 1 säännössä
+
+        // askeleet 1-2
+
+        int ekaSegmentti = -1;
+
+        for (int i = 0; i <= k; i++) {
+            if (segmentit[i][1] - segmentit[i][0] + 1 >= this.pituus) {
+                this.pieninMahdAlkupiste = segmentit[i][0];
+                ekaSegmentti = i;   // ensimmäinen tarpeeksi pitkä segmentti
+                break;
+            }
+        }
+
+        // askeleet 3-4
+
+        int vikaSegmentti = -1;
+
+        for (int i = k; i >= 0; i--) {
+            if (segmentit[i][1] - segmentit[i][0] + 1 >= this.pituus) {
+                this.suurinMahdLoppupiste = segmentit[i][1];
+                vikaSegmentti = i;   // viimeinen tarpeeksi pitkä segmentti
+                break;
+            }
+        }
+
+        // askel 5
+
+        ArrayList<int[]> alutLoput = new ArrayList<>();
+
+        if (ekaSegmentti < vikaSegmentti + 1) {
+            for (int i = ekaSegmentti + 1; i < vikaSegmentti; i++) {
+                boolean eiEdellisenPaalla = (edellinen == null || segmentit[i][0] > edellinen.suurinMahdLoppupiste);
+                boolean eiSeuraavanPaalla = (seuraava == null || segmentit[i][1] < seuraava.pieninMahdAlkupiste);
+                if (segmentit[i][1] - segmentit[i][0] + 1 < this.pituus && eiEdellisenPaalla && eiSeuraavanPaalla) {
+                    int[] alkuLoppu = {segmentit[i][0], segmentit[i][1]};
+                    alutLoput.add(alkuLoppu);
+                }
+            }
+        }
+
+        if (alutLoput.size() > 0) {
+            int[][] valkoiset = new int[alutLoput.size()][3];
+            for (int i = 0; i < alutLoput.size(); i++) {
+                valkoiset[i][0] = alutLoput.get(i)[0];
+                valkoiset[i][1] = alutLoput.get(i)[1];
+                valkoiset[i][2] = valkoiset[i][1] - valkoiset[i][0] + 1;
+            }
+
+            return valkoiset;
         }
 
         return null;

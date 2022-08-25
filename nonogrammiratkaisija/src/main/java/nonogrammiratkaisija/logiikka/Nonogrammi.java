@@ -234,4 +234,19 @@ public class Nonogrammi {
             }
         }
     }
+
+    public void saanto32() {
+        for (int i = 0; i < rivit.length; i++) {
+            int[][] valkoiset = rivit[i].saanto32lyhyetSegmentitJaValkoisetKeskella(
+                    ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi()));
+
+            if (valkoiset != null) {
+                for (int j = 0; j < valkoiset.length; j++) {
+                    if (valkoiset[j][0] != -1) {
+                        ruudukko.getRuudukko()[valkoiset[j][0]][valkoiset[j][1]].setValkoinen();
+                    }
+                }
+            }
+        }
+    }
 }

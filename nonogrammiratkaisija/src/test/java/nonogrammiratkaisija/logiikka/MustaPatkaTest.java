@@ -364,4 +364,37 @@ public class MustaPatkaTest {
         assertEquals("Pienin mahdollinen alkupiste", 6, patkaB.getPieninMahdAlkupiste());
         assertEquals("Suurin mahdollinen loppupiste", 14, patkaB.getSuurinMahdLoppupiste());
     }
+
+    @Test
+    public void saanto331fig15() {
+        MustaPatka patkaA = new MustaPatka(1, 0, 4);
+        MustaPatka patkaB = new MustaPatka(4, 5, 10);
+        MustaPatka patkaC = new MustaPatka(1, 7, 11);
+        Ruutu[] ruudukonRivi = new Ruutu[12];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[5].setMusta();
+
+        Ruutu[] tulos = patkaB.saanto331vasenPaa(ruudukonRivi, patkaA, patkaC);
+        Ruutu[] vertaus = new Ruutu[12];
+        for (int i = 0; i < vertaus.length; i++) {
+            vertaus[i] = new Ruutu();
+        }
+        vertaus[4].setValkoinen();
+        vertaus[5].setMusta();
+        vertaus[6].setMusta();
+        vertaus[7].setMusta();
+        vertaus[8].setMusta();
+        vertaus[9].setValkoinen();
+
+        assertArrayEquals(vertaus, tulos);
+
+        assertEquals(0, patkaA.getPieninMahdAlkupiste());
+        assertEquals(3, patkaA.getSuurinMahdLoppupiste());
+        assertEquals(5, patkaB.getPieninMahdAlkupiste());
+        assertEquals(8, patkaB.getSuurinMahdLoppupiste());
+        assertEquals(10, patkaC.getPieninMahdAlkupiste());
+        assertEquals(11, patkaC.getSuurinMahdLoppupiste());
+    }
 }

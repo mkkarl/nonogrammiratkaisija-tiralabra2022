@@ -249,4 +249,10 @@ public class Nonogrammi {
             }
         }
     }
+    public void saanto33() {
+        for (int i = 0; i < rivit.length; i++) {
+            Ruutu[] ruudukonRivi = this.ruudukko.getRivi(rivit[i].getRivinumero(), rivit[i].onVaakarivi());
+            Ruutu[] uusiRivi = rivit[i].saanto33(ruudukonRivi);
+        }
+    }
 }

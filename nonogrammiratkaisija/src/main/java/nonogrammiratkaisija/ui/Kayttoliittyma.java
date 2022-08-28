@@ -116,6 +116,7 @@ public class Kayttoliittyma {
 
             while (i < vaakarivit.length) { // jos nonogrammi on tyhjä
                 vaakarivit[i] = "";
+                i++;
             }
 
             i = 0;
@@ -127,6 +128,7 @@ public class Kayttoliittyma {
 
             while (i < pystyrivit.length) { // jos viimeiset pystyrivit ovat tyhjiä
                 pystyrivit[i] = "";
+                i++;
             }
         } catch (Exception e) {
             System.out.println("Virhe: " + e.getMessage());

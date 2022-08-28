@@ -420,4 +420,28 @@ public class MustaPatka {
 
         return ruudukonRivi;
     }
+
+    public void saanto332vasenPaa(Ruutu[] ruudukonRivi) {
+        boolean mustaLoytynyt = false;
+
+        for ( int i = this.pieninMahdAlkupiste; i <= this.suurinMahdLoppupiste; i++) {
+            if (!mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
+                mustaLoytynyt = true;
+            } else if (mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
+                this.suurinMahdLoppupiste = i - 1;
+            }
+        }
+    }
+
+    public void saanto332oikeaPaa(Ruutu[] ruudukonRivi) {
+        boolean mustaLoytynyt = false;
+
+        for ( int i = this.suurinMahdLoppupiste; i >= this.pieninMahdAlkupiste; i--) {
+            if (!mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
+                mustaLoytynyt = true;
+            } else if (mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
+                this.pieninMahdAlkupiste = i + 1;
+            }
+        }
+    }
 }

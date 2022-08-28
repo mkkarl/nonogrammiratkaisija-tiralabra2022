@@ -338,6 +338,8 @@ public class MustaPatkaTest {
         assertArrayEquals("PatkaB", vertausB, tulosB);
         assertNull("PatkaC", tulosC);
     }
+    
+    // Sääntö 3.2
 
     @Test
     public void saanto32fig14() {
@@ -364,6 +366,8 @@ public class MustaPatkaTest {
         assertEquals("Pienin mahdollinen alkupiste", 6, patkaB.getPieninMahdAlkupiste());
         assertEquals("Suurin mahdollinen loppupiste", 14, patkaB.getSuurinMahdLoppupiste());
     }
+
+    // Sääntö 3.3-1
 
     @Test
     public void saanto331fig15() {
@@ -429,5 +433,39 @@ public class MustaPatkaTest {
         assertEquals(6, patkaB.getSuurinMahdLoppupiste());
         assertEquals(8, patkaC.getPieninMahdAlkupiste());
         assertEquals(11, patkaC.getSuurinMahdLoppupiste());
+    }
+
+    // Sääntö 3.3-2
+
+    @Test
+    public void saanto332vasen() {
+        MustaPatka patka = new MustaPatka(2, 3, 11);
+        Ruutu[] ruudukonRivi = new Ruutu[15];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[7].setMusta();
+        ruudukonRivi[9].setValkoinen();
+
+        patka.saanto332vasenPaa(ruudukonRivi);
+
+        assertEquals("Pienin mahdollinen alkupiste",3, patka.getPieninMahdAlkupiste());
+        assertEquals("Suurin mahdollinen loppupiste" ,8, patka.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto332oikea() {
+        MustaPatka patka = new MustaPatka(2, 3, 11);
+        Ruutu[] ruudukonRivi = new Ruutu[15];
+        for (int i = 0; i < ruudukonRivi.length; i++) {
+            ruudukonRivi[i] = new Ruutu();
+        }
+        ruudukonRivi[7].setMusta();
+        ruudukonRivi[5].setValkoinen();
+
+        patka.saanto332oikeaPaa(ruudukonRivi);
+
+        assertEquals("Pienin mahdollinen alkupiste",6, patka.getPieninMahdAlkupiste());
+        assertEquals("Suurin mahdollinen loppupiste" ,11, patka.getSuurinMahdLoppupiste());
     }
 }

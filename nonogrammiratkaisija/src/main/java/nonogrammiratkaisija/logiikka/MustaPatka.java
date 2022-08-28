@@ -371,8 +371,13 @@ public class MustaPatka {
             ruudukonRivi[i].setMusta();
         }
 
-        ruudukonRivi[this.pieninMahdAlkupiste - 1].setValkoinen();
-        ruudukonRivi[this.pieninMahdAlkupiste + this.pituus].setValkoinen();
+        if (this.pieninMahdAlkupiste > 0) {
+            ruudukonRivi[this.pieninMahdAlkupiste - 1].setValkoinen();
+        }
+        if (this.pieninMahdAlkupiste + this.pituus < ruudukonRivi.length) {
+            ruudukonRivi[this.pieninMahdAlkupiste + this.pituus].setValkoinen();
+        }
+        
 
         // kohta 2
 
@@ -407,8 +412,13 @@ public class MustaPatka {
             ruudukonRivi[i].setMusta();
         }
 
-        ruudukonRivi[this.suurinMahdLoppupiste + 1].setValkoinen();
-        ruudukonRivi[this.suurinMahdLoppupiste - this.pituus].setValkoinen();
+        if (this.suurinMahdLoppupiste + 1 < ruudukonRivi.length) {
+            ruudukonRivi[this.suurinMahdLoppupiste + 1].setValkoinen();
+        }
+        if (this.suurinMahdLoppupiste - this.pituus >= 0) {
+            ruudukonRivi[this.suurinMahdLoppupiste - this.pituus].setValkoinen();
+        }
+        
 
         // kohta 2
 

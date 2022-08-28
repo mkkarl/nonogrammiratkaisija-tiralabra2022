@@ -637,7 +637,7 @@ public abstract class Rivi {
                     // 3.3-3
                     int[][] segmentit = segmenttilaskuri(ruudukonRivi);
 
-                    if (segmentit.length > 1) {
+                    if (segmentit != null && segmentit.length > 1) {
                         this.patkat[j].saanto333vasenPaa(segmentit);
                     }
                 }
@@ -670,7 +670,7 @@ public abstract class Rivi {
                     // 3.3-3
                     int[][] segmentit = segmenttilaskuri(ruudukonRivi);
 
-                    if (segmentit.length > 1) {
+                    if (segmentit != null && segmentit.length > 1) {
                         this.patkat[j].saanto333oikeaPaa(segmentit);
                     }
                 }

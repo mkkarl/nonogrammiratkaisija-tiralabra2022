@@ -31,9 +31,7 @@ public class Sovelluslogiikka {
         nonogrammi.saanto23();
         nonogrammi.saanto31();
         nonogrammi.saanto32();
-    }
-
-    public void testi() {
         nonogrammi.saanto33();
     }
+
 }

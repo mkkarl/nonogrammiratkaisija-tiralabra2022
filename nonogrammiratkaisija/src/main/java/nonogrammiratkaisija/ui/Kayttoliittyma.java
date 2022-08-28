@@ -37,9 +37,6 @@ public class Kayttoliittyma {
                 sovelluslogiikka.ratkaiseNonogrammi();
                 tulostaNonogrammi();
                 tulostaPatkat();
-                sovelluslogiikka.testi();
-                tulostaNonogrammi();
-                tulostaPatkat();
             } else if (komento.toUpperCase().equals("T")) {
                 // tähän tulee tiedoston syöttö
                 System.out.println("Tiedoston syöttö on tuleva ominaisuus\n");

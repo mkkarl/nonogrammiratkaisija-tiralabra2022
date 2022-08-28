@@ -280,11 +280,12 @@ public class MustaPatka {
             return null;
         }
 
-        // määritetään valkoisten väliin jäävät segmentit (voivat olla mustia tai tuntemattomia)
+        // määritetään valkoisten väliin jäävät segmentit (voivat olla mustia tai
+        // tuntemattomia)
         int[][] segmentit = new int[(this.suurinMahdLoppupiste - this.pieninMahdAlkupiste + 1) / 2][2];
         int segAlku = this.pieninMahdAlkupiste;
         int k = 0;
-        
+
         for (int i = this.pieninMahdAlkupiste; i <= this.suurinMahdLoppupiste; i++) {
             if (ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
                 if (segAlku != -1 && i != this.pieninMahdAlkupiste) {
@@ -298,7 +299,7 @@ public class MustaPatka {
                 segAlku = i;
             }
         }
-        
+
         // nyt k = b - 1 säännössä
 
         // askeleet 1-2
@@ -308,7 +309,7 @@ public class MustaPatka {
         for (int i = 0; i <= k; i++) {
             if (segmentit[i][1] - segmentit[i][0] + 1 >= this.pituus) {
                 this.pieninMahdAlkupiste = segmentit[i][0];
-                ekaSegmentti = i;   // ensimmäinen tarpeeksi pitkä segmentti
+                ekaSegmentti = i; // ensimmäinen tarpeeksi pitkä segmentti
                 break;
             }
         }
@@ -320,7 +321,7 @@ public class MustaPatka {
         for (int i = k; i >= 0; i--) {
             if (segmentit[i][1] - segmentit[i][0] + 1 >= this.pituus) {
                 this.suurinMahdLoppupiste = segmentit[i][1];
-                vikaSegmentti = i;   // viimeinen tarpeeksi pitkä segmentti
+                vikaSegmentti = i; // viimeinen tarpeeksi pitkä segmentti
                 break;
             }
         }
@@ -334,7 +335,7 @@ public class MustaPatka {
                 boolean eiEdellisenPaalla = (edellinen == null || segmentit[i][0] > edellinen.suurinMahdLoppupiste);
                 boolean eiSeuraavanPaalla = (seuraava == null || segmentit[i][1] < seuraava.pieninMahdAlkupiste);
                 if (segmentit[i][1] - segmentit[i][0] + 1 < this.pituus && eiEdellisenPaalla && eiSeuraavanPaalla) {
-                    int[] alkuLoppu = {segmentit[i][0], segmentit[i][1]};
+                    int[] alkuLoppu = { segmentit[i][0], segmentit[i][1] };
                     alutLoput.add(alkuLoppu);
                 }
             }
@@ -357,14 +358,15 @@ public class MustaPatka {
     // Sääntö 3.3-1
 
     /**
-     * Toteuttaa säännön 3.3-1 mustalle pätkälle oikeaan päähän.
-     * Tee vain pätkälle, jonka edellä ei ole pätkää tai edeltävä pätkä ei ole päälekkäinen,
+     * Toteuttaa säännön 3.3-1 mustalle pätkälle vasempaan päähän.
+     * Tee vain pätkälle, jonka edellä ei ole pätkää tai edeltävä pätkä ei ole
+     * päälekkäinen,
      * ja jonka pienin mahdollinen alkupiste on musta.
      */
     public Ruutu[] saanto331vasenPaa(Ruutu[] ruudukonRivi, MustaPatka edellinen, MustaPatka seuraava) {
 
         // kohta 1
-        
+
         for (int i = this.pieninMahdAlkupiste; i <= this.pieninMahdAlkupiste + this.pituus - 1; i++) {
             ruudukonRivi[i].setMusta();
         }
@@ -391,9 +393,15 @@ public class MustaPatka {
         return ruudukonRivi;
     }
 
-    public Ruutu[] saanto331oikeaPaa (Ruutu[] ruudukonRivi, MustaPatka edellinen, MustaPatka seuraava) {
+    /**
+     * Toteuttaa säännön 3.3-1 mustalle pätkälle oikeaan päähän.
+     * Tee vain pätkälle, jonka jäljessä ei ole pätkää tai seuraava pätkä ei ole
+     * päälekkäinen,
+     * ja jonka suurin mahdollinen loppupiste on musta.
+     */
+    public Ruutu[] saanto331oikeaPaa(Ruutu[] ruudukonRivi, MustaPatka edellinen, MustaPatka seuraava) {
 
-        //kohta 1
+        // kohta 1
 
         for (int i = this.suurinMahdLoppupiste; i >= this.suurinMahdLoppupiste - this.pituus + 1; i--) {
             ruudukonRivi[i].setMusta();
@@ -421,10 +429,16 @@ public class MustaPatka {
         return ruudukonRivi;
     }
 
+    /**
+     * Toteuttaa säännön 3.3-2 mustalle pätkälle vasempaan päähän.
+     * Tee vain pätkälle, jonka edellä ei ole pätkää tai edeltävä pätkä ei ole
+     * päälekkäinen,
+     * ja jonka pienin mahdollinen alkupiste on muu kuin musta musta.
+     */
     public void saanto332vasenPaa(Ruutu[] ruudukonRivi) {
         boolean mustaLoytynyt = false;
 
-        for ( int i = this.pieninMahdAlkupiste; i <= this.suurinMahdLoppupiste; i++) {
+        for (int i = this.pieninMahdAlkupiste; i <= this.suurinMahdLoppupiste; i++) {
             if (!mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
                 mustaLoytynyt = true;
             } else if (mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
@@ -433,14 +447,90 @@ public class MustaPatka {
         }
     }
 
+    /**
+     * Toteuttaa säännön 3.3-2 mustalle pätkälle oikeaan päähän.
+     * Tee vain pätkälle, jonka jäljessä ei ole pätkää tai seuraava pätkä ei ole
+     * päälekkäinen,
+     * ja jonka suurin mahdollinen loppupiste on muu kuin musta.
+     */
     public void saanto332oikeaPaa(Ruutu[] ruudukonRivi) {
         boolean mustaLoytynyt = false;
 
-        for ( int i = this.suurinMahdLoppupiste; i >= this.pieninMahdAlkupiste; i--) {
+        for (int i = this.suurinMahdLoppupiste; i >= this.pieninMahdAlkupiste; i--) {
             if (!mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.MUSTA) {
                 mustaLoytynyt = true;
             } else if (mustaLoytynyt && ruudukonRivi[i].getTila() == RuudunTila.VALKOINEN) {
                 this.pieninMahdAlkupiste = i + 1;
+            }
+        }
+    }
+
+    public void saanto333vasenPaa(int[][] segmentit) {
+        int segmenttienLkm = 0;
+        int i = -1;
+
+        for (int k = 0; k < segmentit.length; k++) {
+            if (segmentit[k][0] >= this.pieninMahdAlkupiste && segmentit[k][1] <= this.suurinMahdLoppupiste) {
+                if (segmenttienLkm == 0) {
+                    i = k; // aske 1
+                }
+
+                segmenttienLkm++;
+            } else if (segmentit[k][1] > this.suurinMahdLoppupiste) {
+                break;
+            }
+        }
+
+        if (segmenttienLkm > 1) {
+            int s = segmentit[i][0]; // askel 2
+            int m = i + 1; // askel 3
+
+            // askel 4
+            while (m < i + segmenttienLkm) {
+                int t = segmentit[m][0];
+                int e = segmentit[m][1];
+
+                if (e - s + 1 > this.pituus) {
+                    this.suurinMahdLoppupiste = t - 2;
+                    return;
+                } else {
+                    m++;
+                }
+            }
+        }
+    }
+
+    public void saanto333oikeaPaa(int[][] segmentit) {
+        int segmenttienLkm = 0;
+        int i = -1;
+
+        for (int k = segmentit.length - 1; k >= 0; k--) {
+            if (segmentit[k][0] >= this.pieninMahdAlkupiste && segmentit[k][1] <= this.suurinMahdLoppupiste) {
+                if (segmenttienLkm == 0) {
+                    i = k; // aske 1
+                }
+
+                segmenttienLkm++;
+            } else if (segmentit[k][0] < this.pieninMahdAlkupiste) {
+                break;
+            }
+        }
+
+        if (segmenttienLkm > 1) {
+            int e = segmentit[i][1]; // askel 2
+            int m = i - 1; // askel 3
+
+            // askel 4
+            while (m > i - segmenttienLkm) {
+                int t = segmentit[m][1];
+                int s = segmentit[m][0];
+
+                if (e - s + 1 > this.pituus) {
+                    this.pieninMahdAlkupiste = t + 2;
+                    return;
+                } else {
+                    m--;
+                }
             }
         }
     }

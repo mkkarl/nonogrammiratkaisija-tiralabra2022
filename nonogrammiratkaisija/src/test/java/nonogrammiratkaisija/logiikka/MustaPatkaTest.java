@@ -468,4 +468,28 @@ public class MustaPatkaTest {
         assertEquals("Pienin mahdollinen alkupiste",6, patka.getPieninMahdAlkupiste());
         assertEquals("Suurin mahdollinen loppupiste" ,11, patka.getSuurinMahdLoppupiste());
     }
+
+    // Sääntö 3.3-3
+
+    @Test
+    public void saanto333fig17() {
+        MustaPatka patka = new MustaPatka(4, 4, 11);
+        int[][] segmentit = {{6, 6}, {10, 10}};
+
+        patka.saanto333vasenPaa(segmentit);
+
+        assertEquals("Pienin mahdollinen alkupiste",4, patka.getPieninMahdAlkupiste());
+        assertEquals("Suurin mahdollinen loppupiste" ,8, patka.getSuurinMahdLoppupiste());
+    }
+
+    @Test
+    public void saanto333fig17rev() {
+        MustaPatka patka = new MustaPatka(4, 2, 9);
+        int[][] segmentit = {{3, 3}, {7, 7}};
+
+        patka.saanto333oikeaPaa(segmentit);
+
+        assertEquals("Pienin mahdollinen alkupiste",5, patka.getPieninMahdAlkupiste());
+        assertEquals("Suurin mahdollinen loppupiste" ,9, patka.getSuurinMahdLoppupiste());
+    }
 }

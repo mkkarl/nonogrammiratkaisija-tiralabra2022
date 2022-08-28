@@ -35,15 +35,11 @@ public class Kayttoliittyma {
             if (komento.toUpperCase().equals("S")) {
                 // tähän tulee käsin syöttö
                 kasiSyotto();
-                sovelluslogiikka.ratkaiseNonogrammi();
-                tulostaNonogrammi();
-                tulostaPatkat();
+                ratkaise();
             } else if (komento.toUpperCase().equals("T")) {
                 // tähän tulee tiedoston syöttö
                 tiedostoSyotto();
-                sovelluslogiikka.ratkaiseNonogrammi();
-                tulostaNonogrammi();
-                tulostaPatkat();
+                virheenEtsinta();
             } else if (komento.toUpperCase().equals("L")) {
                 System.out.println("Kiitos ja näkemiin!");
                 break;
@@ -93,7 +89,8 @@ public class Kayttoliittyma {
                 "Älä jätä näiden vaiheiden väliin tyhjiä rivejä, sillä tyhjät rivit tulkitaan nonogrammin tyhjiksi riveiksi.");
         System.out.println();
 
-        System.out.print("Anna tiedoston nimi (Ubuntussa muodossa '/home/[kayttajanimi]/[tiedostopolku]/[tiedostonimi]'): ");
+        System.out.print(
+                "Anna tiedoston nimi (Ubuntussa muodossa '/home/[kayttajanimi]/[tiedostopolku]/[tiedostonimi]'): ");
         String tiedostonimi = lukija.nextLine();
 
         String[] vaakarivit = {};
@@ -172,6 +169,62 @@ public class Kayttoliittyma {
         }
 
         System.out.println(ylaAlaReuna + "\n");
+    }
+
+    private void ratkaise() {
+        this.sovelluslogiikka.ratkaiseNonogrammi();
+        tulostaNonogrammi();
+        tulostaPatkat();
+    }
+
+    private void virheenEtsinta() {
+        System.out.println("Alustuksen jälkeen");
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 1.1");
+        this.sovelluslogiikka.getNonogrammi().saanto11();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 1.5");
+        this.sovelluslogiikka.getNonogrammi().saanto12();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 1.3");
+        this.sovelluslogiikka.getNonogrammi().saanto13();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 1.4");
+        this.sovelluslogiikka.getNonogrammi().saanto14();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 1.5");
+        this.sovelluslogiikka.getNonogrammi().saanto15();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 2.1");
+        this.sovelluslogiikka.getNonogrammi().saanto21();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 2.2");
+        this.sovelluslogiikka.getNonogrammi().saanto22();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 2.3");
+        this.sovelluslogiikka.getNonogrammi().saanto23();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 3.1");
+        this.sovelluslogiikka.getNonogrammi().saanto31();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 3.2");
+        this.sovelluslogiikka.getNonogrammi().saanto32();
+        tulostaNonogrammi();
+        tulostaPatkat();
+        System.out.println("Sääntö 3.3");
+        this.sovelluslogiikka.getNonogrammi().saanto33();
+        tulostaNonogrammi();
+        tulostaPatkat();
     }
 
     private void tulostaPatkat() {

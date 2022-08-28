@@ -613,6 +613,9 @@ public abstract class Rivi {
         for (int j = 0; j < this.patkat.length; j++) {
             if (j == 0 || this.patkat[j].getPieninMahdAlkupiste() > this.patkat[j - 1].getSuurinMahdLoppupiste()) {
 
+                // 3.3 VASEN PÄÄ
+                // -------------
+
                 MustaPatka edellinen = null;
                 MustaPatka seuraava = null;
 
@@ -624,10 +627,28 @@ public abstract class Rivi {
                     seuraava = patkat[j + 1];
                 }
 
+                // 3.3-1
                 if (ruudukonRivi[this.patkat[j].getPieninMahdAlkupiste()].getTila() == RuudunTila.MUSTA) {
                     ruudukonRivi = this.patkat[j].saanto331vasenPaa(ruudukonRivi, edellinen, seuraava);
+                } else {
+                    // 3.3-2
+                    this.patkat[j].saanto332vasenPaa(ruudukonRivi);
+
+                    // 3.3-3
+                    int[][] segmentit = segmenttilaskuri(ruudukonRivi);
+
+                    if (segmentit.length > 1) {
+                        this.patkat[j].saanto333vasenPaa(segmentit);
+                    }
                 }
-            } else if (j == this.patkat.length - 1 || this.patkat[j].getSuurinMahdLoppupiste() < this.patkat[j + 1].getPieninMahdAlkupiste()) {
+            }
+
+            if (j == this.patkat.length - 1
+                    || this.patkat[j].getSuurinMahdLoppupiste() < this.patkat[j + 1].getPieninMahdAlkupiste()) {
+
+                // 3.3 OIKEA PÄÄ
+                // -------------
+
                 MustaPatka edellinen = null;
                 MustaPatka seuraava = null;
 
@@ -639,8 +660,19 @@ public abstract class Rivi {
                     seuraava = patkat[j + 1];
                 }
 
+                // 3.3-1
                 if (ruudukonRivi[this.patkat[j].getPieninMahdAlkupiste()].getTila() == RuudunTila.MUSTA) {
                     ruudukonRivi = this.patkat[j].saanto331oikeaPaa(ruudukonRivi, edellinen, seuraava);
+                } else {
+                    // 3.3-2
+                    this.patkat[j].saanto332oikeaPaa(ruudukonRivi);
+
+                    // 3.3-3
+                    int[][] segmentit = segmenttilaskuri(ruudukonRivi);
+
+                    if (segmentit.length > 1) {
+                        this.patkat[j].saanto333oikeaPaa(segmentit);
+                    }
                 }
             }
 
